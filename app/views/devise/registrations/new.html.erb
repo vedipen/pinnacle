@@ -17,6 +17,16 @@
 </div>
 
 <div class="form-group">
+    <%= f.label :usertype, class: "col-sm-2 control-label" %><i class="col-sm-2 control-label"> (if you are an owner or a PMC member, contact admin)</i>
+    <div class="col-sm-6">
+      <%= f.select :usertype, class: "form-control" do%>
+        <option value="Participant">Participant</option>
+        <option value="Owner">Spectator</option>
+      <%end%>
+    </div>
+</div>
+
+<div class="form-group">
     <%= f.label :password, class: "col-sm-2 control-label" %>
     <div class="col-sm-6">
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>

@@ -18,6 +18,14 @@
 </div>
 
 <div class="form-group">
+    <%= f.label :usertype, class: "col-sm-2 control-label" %>
+    <div class="col-sm-6">
+        <%= f.text_field :usertype, :readonly => true , class: "form-control" %>
+    </div>
+</div>
+
+
+<div class="form-group">
     <%= f.label :password, class: 'col-sm-2 control-label'  %> <i class="col-sm-2 control-label"> (leave blank if you don't want to change it)</i>
     <div class="col-sm-6">
         <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
