@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :comments
   end
   resource :profile
-
+  get 'profile/index' => 'profiles#index'
   root 'posts#index'
 end

@@ -1,3 +1,12 @@
+#post_show
+%h1= @user.name
+%p.username
+Shared by
+= @user.name
+about
+= time_ago_in_words(@profile.created_at)
+.clearfix
+.post_data
 %h2= @profile.about_me
 = @user.name
 = @profile.strengths

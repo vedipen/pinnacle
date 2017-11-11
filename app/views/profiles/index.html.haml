@@ -1,9 +1,35 @@
-- @profile.each do |profile|
-  %h2= profile.about_me
-  = profile.user.name
-  = profile.strengths
-  = profile.weakness
-  = profile.seniority
-  = profile.age
-  = profile.education
-  = profile.nick_name
+- if user_signed_in?
+	%p#intro
+		Hello
+		= current_user.name
+		%br/
+		%span
+			Share your inspiration and see what's inspiring others.
+- else
+	%p#intro
+		What's your pinnacle?
+		%br/
+		%span
+			Share your inspiration and see what's inspiring others.
+#posts
+	- @profiles.each do |profile|
+		.post
+			.post_content
+				.about_me
+				.data.clearfix
+					= profile.about_me
+				.data.clearfix
+					= profile.strengths
+				.data.clearfix
+					= profile.weakness
+				.data.clearfix
+					= profile.seniority
+				.data.clearfix
+					= profile.age
+				.data.clearfix
+					= profile.education
+				.data.clearfix
+					= profile.nick_name
+					%p.username
+						Shared by
+						= current_user.name
