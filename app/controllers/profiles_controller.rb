@@ -1,4 +1,4 @@
-class ProfileController < ApplicationController
+class ProfilesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authenticate_user_participant_owner, only: [:new, :create, :update, :destroy]
 
