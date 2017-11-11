@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
-  resources :profiles
+  resource :profile
 
   root 'posts#index'
 end

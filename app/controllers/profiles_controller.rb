@@ -1,23 +1,26 @@
 class ProfilesController < ApplicationController
+  before_action :find_profile, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authenticate_user_participant_owner, only: [:new, :create, :update, :destroy]
+  before_action :already_created_profile, only: [:create, :new]
 
   def index
-    @profile = Profile.all.order("created_at DESC")
+    @profiles = Profile.all.order("created_at DESC")
   end
 
   def show
+    @user = current_user
   end
 
   def new
-    @profile = Profile.new
+    @profile =  current_user.build_profile
   end
 
   def create
-    @profile = Profile.new(post_params)
+    @profile = current_user.build_profile(profile_params)
 
-    if @profile.save
-      redirect_to @profile
+    if @profile.save!
+      redirect_to root_path
     else
       render 'new'
     end
@@ -27,7 +30,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @profile.update(post_params)
+    if @profile.update(profile_params)
       redirect_to @profile
     else
       render 'edit'
@@ -41,8 +44,8 @@ class ProfilesController < ApplicationController
 
   private
 
-  def find_post
-    @profile = Profile.find(params[:id])
+  def find_profile
+    @profile = Profile.find_by(user_id: params[:id])
   end
 
   def authenticate_user_participant_owner
@@ -53,8 +56,16 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def post_params
+  def profile_params
     params.require(:profile).permit(:about_me, :strengths, :weakness, :seniority, :age, :education, :nick_name)
+  end
+
+  def already_created_profile
+    if current_user.profile == nil
+
+    else
+      redirect_to profile_path
+    end
   end
 
 end
