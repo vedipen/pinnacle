@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user_admin, only: [:new, :create, :update, :destroy]
 
   def index
     @posts = Post.all.order("created_at DESC")
@@ -54,7 +55,15 @@ class PostsController < ApplicationController
   private
 
   def find_post
-      @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
+  end
+
+  def authenticate_user_admin
+    if current_user.usertype == "PMC" || current_user.usertype == "Admin"
+
+    else
+      redirect_to root_path
+    end
   end
 
   def post_params
