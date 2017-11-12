@@ -1,8 +1,9 @@
 class ProfilesController < ApplicationController
   before_action :find_profile, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authenticate_user_participant_owner, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user_participant_owner, only: [:new, :create]
   before_action :already_created_profile, only: [:create, :new]
+  before_action :same_user_or_admin_can_edit, only: [:edit, :update, :destroy]
 
   def index
     @profiles = Profile.all.order("created_at DESC")
@@ -65,7 +66,21 @@ class ProfilesController < ApplicationController
     if current_user.profile == nil
 
     else
-      redirect_to profile_id_path(current_user.profile.id)
+      redirect_to profile_path(current_user.profile.id)
+    end
+  end
+
+  def same_user_or_admin_can_edit
+    if current_user.usertype == "PMC" || current_user.usertype == "Admin"
+
+    elsif current_user.profile
+      if current_user.profile.id == @profile.id
+
+      else
+        redirect_to profile_path(@profile.id)
+      end
+    else
+      redirect_to profile_path(@profile.id)
     end
   end
 

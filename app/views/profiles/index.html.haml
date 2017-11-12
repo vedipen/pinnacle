@@ -15,7 +15,7 @@
 	- @profiles.each do |profile|
 		.post
 			.post_content
-				%h2= link_to profile.user.name, profile_id_path(profile.id)
+				%h2= link_to profile.user.name, profile
 				.about_me
 				.data.clearfix
 					%h3 About Me

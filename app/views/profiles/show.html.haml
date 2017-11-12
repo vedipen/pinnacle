@@ -1,33 +1,46 @@
 #post_show
-  %h1= @user.name
+  %h1= @profile.user.name
   %p.username
     Shared by
-    = @user.name
+    = @profile.user.name
     about
     = time_ago_in_words(@profile.created_at)
   .clearfix
     .post_data
-    %h2= @profile.about_me
+    %h3 About Me
+    = @profile.about_me
     .data
-    = @user.name
+    %h3 Name
+    = @profile.user.name
     .data
+    %h3 Strengths
     = @profile.strengths
     .data
+    %h3 Weakness
     = @profile.weakness
     .data
+    %h3 Seniority
     = @profile.seniority
     .data
+    %h3 Age
     = @profile.age
     .data
+    %h3 Education
     = @profile.education
     .data
+    %h3 Nick Name
     = @profile.nick_name
-    #random_post{ :style => "float:right;" }
+    #random_post{ :style => "float:right; margin-top: -30.2rem;" }
       %h3 Random Participant
       .post
         .post_content
           .title
-            %h2= link_to @random_participant.user.name, profile_id_path(@random_participant)
+            %h2= link_to @random_participant.user.name, profile_path(@random_participant)
           .data.clearfix
             = @profile.about_me
-          
+- if user_signed_in?
+  - if current_user.profile
+    - if current_user.profile.id == @profile.id
+      = link_to "Edit Your Profile", edit_profile_path, class: "button"
+  - elsif current_user.usertype == "PMC" || current_user.usertype == "Admin"
+    = link_to "Edit His Profile", edit_profile_path, class: "button"
