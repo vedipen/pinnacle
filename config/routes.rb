@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   end
   resource :profile
   get 'profile/index' => 'profiles#index'
+  get 'profile/:id' => 'profiles#show', :as => :profile_id
   root 'posts#index'
 end

@@ -15,21 +15,30 @@
 	- @profiles.each do |profile|
 		.post
 			.post_content
+				%h2= link_to profile.user.name, profile_id_path(profile.id)
 				.about_me
 				.data.clearfix
+					%h3 About Me
 					= profile.about_me
 				.data.clearfix
+					%h3 My Strengths
 					= profile.strengths
 				.data.clearfix
+					%h3 My Weakness
 					= profile.weakness
 				.data.clearfix
+					%h3 Seniority
 					= profile.seniority
 				.data.clearfix
+					%h3 Age
 					= profile.age
 				.data.clearfix
+					%h3 Education
 					= profile.education
 				.data.clearfix
+					%h3 Nick Name
 					= profile.nick_name
+				.data.clearfix
 					%p.username
 						Shared by
-						= current_user.name
+						= profile.user.name

@@ -1,17 +1,33 @@
 #post_show
-%h1= @user.name
-%p.username
-Shared by
-= @user.name
-about
-= time_ago_in_words(@profile.created_at)
-.clearfix
-.post_data
-%h2= @profile.about_me
-= @user.name
-= @profile.strengths
-= @profile.weakness
-= @profile.seniority
-= @profile.age
-= @profile.education
-= @profile.nick_name
+  %h1= @user.name
+  %p.username
+    Shared by
+    = @user.name
+    about
+    = time_ago_in_words(@profile.created_at)
+  .clearfix
+    .post_data
+    %h2= @profile.about_me
+    .data
+    = @user.name
+    .data
+    = @profile.strengths
+    .data
+    = @profile.weakness
+    .data
+    = @profile.seniority
+    .data
+    = @profile.age
+    .data
+    = @profile.education
+    .data
+    = @profile.nick_name
+    #random_post{ :style => "float:right;" }
+      %h3 Random Participant
+      .post
+        .post_content
+          .title
+            %h2= link_to @random_participant.user.name, profile_id_path(@random_participant)
+          .data.clearfix
+            = @profile.about_me
+          

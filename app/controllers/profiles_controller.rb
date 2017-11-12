@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user
+    @random_participant = Profile.where.not(id: @post).order("RANDOM()").first
   end
 
   def new
@@ -45,7 +46,7 @@ class ProfilesController < ApplicationController
   private
 
   def find_profile
-    @profile = Profile.find_by(user_id: params[:id])
+    @profile = Profile.find(params[:id])
   end
 
   def authenticate_user_participant_owner
@@ -64,7 +65,7 @@ class ProfilesController < ApplicationController
     if current_user.profile == nil
 
     else
-      redirect_to profile_path
+      redirect_to profile_id_path(current_user.profile.id)
     end
   end
 
