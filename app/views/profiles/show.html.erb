@@ -168,11 +168,13 @@ h6,
             <p><%= @profile.education%></p>
             <hr>
           <%=
-          if current_user.usertype == "PMC" || current_user.usertype == "Admin"
-            link_to "Edit Profile", edit_profile_path, class: "button"
-          elsif current_user.profile
-            if current_user.profile.id == @profile.id
+          if current_user
+            if current_user.usertype == "PMC" || current_user.usertype == "Admin"
               link_to "Edit Profile", edit_profile_path, class: "button"
+            elsif current_user.profile
+              if current_user.profile.id == @profile.id
+                link_to "Edit Profile", edit_profile_path, class: "button"
+              end
             end
           end
           %>
