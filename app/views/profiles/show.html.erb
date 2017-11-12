@@ -148,6 +148,10 @@ h6,
             <h1 class="blog-post-title"><%= @profile.user.name %></h1>
             <p class="blog-post-meta"><%= time_ago_in_words(@profile.created_at)%> ago</a></p>
             <hr>
+            <div class="post_image_description">
+              <img src="<%= @profile.image%>">
+            </div>
+            <hr>
             <h3>About Me</h3>
             <p><%= @profile.about_me%></p>
             <h3>Nick Name</h3>

@@ -1,10 +1,11 @@
 = simple_form_for @profile do |f|
+  = f.input :image
   = f.input :about_me
-  = f.input :strengths
-  = f.input :weakness
-  = f.input :seniority
+  = f.input :strengths, label: 'Strengths (Write in points, minimum 3)'
+  = f.input :weakness, label: 'Weaknesses (Write in points, minimum 3)'
+  = f.input :seniority, label: 'Seniority (Years in Hostel)'
   = f.input :age
-  = f.input :education
-  = f.input :nick_name
+  = f.input :education, label: 'Education (Eg. 3rd Year Mechanical Engineer at VJTI)'
+  = f.input :nick_name, label: 'Nick Name'
 
   = f.button :submit

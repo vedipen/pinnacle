@@ -4,7 +4,7 @@
 		Shared by
 		= @post.user.name
 		about
-		= time_ago_in_words(@post.created_at)
+		= time_ago_in_words(@post.created_at) + " ago"
 	.clearfix
 		.post_image_description
 			= image_tag @post.image.url(:medium)
@@ -48,7 +48,7 @@
 	%h2.comment_count= pluralize(@post.comments.count, "Comment")
 	- @comments.each do |comment|
 		.comment
-			%p.username= comment.user.name
+			%p.username= comment.user.name + " (" + comment.user.usertype + ")"
 			%p.content= comment.content
 
 	= render "comments/form"

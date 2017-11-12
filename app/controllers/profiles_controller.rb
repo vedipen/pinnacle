@@ -59,7 +59,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:about_me, :strengths, :weakness, :seniority, :age, :education, :nick_name)
+    params.require(:profile).permit(:about_me, :strengths, :weakness, :seniority, :age, :education, :nick_name, :image)
   end
 
   def already_created_profile

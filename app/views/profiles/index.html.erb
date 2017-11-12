@@ -73,6 +73,7 @@
           <div class="row">
             <% @profiles.each do |profile| %>
               <div class="card border">
+                <img style="height: 280px; width: 100%; display: block;" src="<%= profile.image%>">
                 <p class="card-text">
                   <h2 class="blog-post-title"><a href="<%= profile_path(profile)%>"><%= profile.user.name %></a></h2>
                   <p class="blog-post-meta"><%= time_ago_in_words(profile.created_at)%> ago</p>
