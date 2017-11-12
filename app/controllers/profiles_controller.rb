@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user
-    @random_participant = Profile.where.not(id: @post).order("RANDOM()").first
+    @random_participant = Profile.where.not(id: @profile).order("RANDOM()").first
   end
 
   def new

@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Pinnacle
+    %title Pinnacle '18
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -19,7 +19,7 @@
 %body
   %header
     .wrapper.clearfix
-      #logo= link_to "Pinnacle", root_path
+      #logo= link_to "Pinnacle '18", root_path
       %nav
         - if user_signed_in?
           = link_to "Account", edit_user_registration_path, class: "button"
