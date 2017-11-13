@@ -148,6 +148,9 @@ h6,
             <h1 class="blog-post-title"><%= @ownerprofile.user.name %></h1>
             <p class="blog-post-meta"><%= time_ago_in_words(@ownerprofile.created_at)%> ago</a></p>
             <hr>
+            <div class="post_image_description">
+              <img src="<%= @ownerprofile.image%>">
+            </div>
             <hr>
             <h3>About Me</h3>
             <p><%= simple_format(@ownerprofile.aboutme)%></p>
@@ -166,7 +169,7 @@ h6,
               link_to "Edit Profile", edit_profile_path, class: "button"
             elsif current_user.teamowner
               if current_user.teamowner.id == @ownerprofile.id
-                link_to "Edit Profile", edit_profile_path, class: "button"
+                link_to "Edit Profile", edit_teamowner_path, class: "button"
               end
             end
           end

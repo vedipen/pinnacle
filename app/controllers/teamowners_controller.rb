@@ -58,15 +58,15 @@ class TeamownersController < ApplicationController
     end
   end
 
-  def profile_params
-    params.require(:teamowner).permit(:aboutme, :seniority, :age, :education, :nick_name, :room, :phone)
+  def owner_params
+    params.require(:teamowner).permit(:aboutme, :seniority, :age, :education, :nick_name, :room, :phone, :image)
   end
 
   def already_created_profile
     if current_user.teamowner == nil
 
     else
-      redirect_to profile_path(current_user.profile.id)
+      redirect_to teamowner_path(current_user.teamowner.id)
     end
   end
 
