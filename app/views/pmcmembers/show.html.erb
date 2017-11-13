@@ -176,7 +176,7 @@ h6,
           <aside class="col-sm-4 ml-sm-auto blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
               <p style="color: grey;"><strong>Random PMC Member</strong></p>
-              <h4><a href="<%= pmcmember_path(@random_participant)%>"><%= @random_pmc.user.name%></a></h3>
+              <h4><a href="<%= pmcmember_path(@random_pmc)%>"><%= @random_pmc.user.name%></a></h3>
               <p>People call me <i><%= @random_pmc.nick_name%></i></p>
             </div>
         <% end %>
