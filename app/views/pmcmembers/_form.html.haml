@@ -1,0 +1,11 @@
+= simple_form_for @pmcprofile do |f|
+  = f.input :image
+  = f.input :aboutme, label: 'About Me'
+  = f.input :seniority, label: 'Seniority (Years in Hostel)'
+  = f.input :age
+  = f.input :education, label: 'Education (Eg. 3rd Year Mechanical Engineer at VJTI)'
+  = f.input :nick_name, label: 'Nick Name'
+  = f.input :room, label: 'Room Number'
+  = f.input :phone, label: 'Mobile'
+
+  = f.button :submit

@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   resource :profile
   resources :teamowners
   resource :teamowner
+  resources :pmcmembers
+  resource :pmcmember
+
   root 'posts#index'
 end

@@ -63,7 +63,7 @@
             current_user.name + "!"
           end
           %></h1>
-          <p class="lead text-muted">Our fellow Pinnacle participants</p>
+          <p class="lead text-muted">Pinnacle Management Committee</p>
         </div>
       </section>
 
@@ -71,15 +71,15 @@
         <div class="container">
 
           <div class="row">
-            <% @profiles.each do |profile| %>
+            <% @pmcprofile.each do |profile| %>
               <div class="card border">
                 <img style="height: 280px; width: 100%; display: block;" src="<%= profile.image%>">
                 <p class="card-text">
-                  <h2 class="blog-post-title"><a href="<%= profile_path(profile)%>"><%= profile.user.name %></a></h2>
+                  <h2 class="blog-post-title"><a href="<%= pmcmember_path(profile)%>"><%= profile.user.name %></a></h2>
                   <p class="blog-post-meta"><%= time_ago_in_words(profile.created_at)%> ago</p>
                   <hr>
                   <h3>About Me</h3>
-                  <p><%= simple_format(profile.about_me)%></p>
+                  <p><%= simple_format(profile.aboutme)%></p>
                 </p>
               </div>
             <% end %>

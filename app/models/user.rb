@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :comments
   has_one :profile
   has_one :teamowner
+  has_one :pmcmember
 end

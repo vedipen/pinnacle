@@ -145,43 +145,39 @@ h6,
         <div class="col-sm-8 blog-main">
 
           <div class="blog-post">
-            <h1 class="blog-post-title"><%= @ownerprofile.user.name %></h1>
-            <p class="blog-post-meta"><%= time_ago_in_words(@ownerprofile.created_at)%> ago</a></p>
+            <h1 class="blog-post-title"><%= @pmcprofile.user.name %></h1>
+            <p class="blog-post-meta"><%= time_ago_in_words(@pmcprofile.created_at)%> ago</a></p>
             <hr>
             <div class="post_image_description">
-              <img src="<%= @ownerprofile.image%>">
+              <img src="<%= @pmcprofile.image%>">
             </div>
             <hr>
             <h3>About Me</h3>
-            <p><%= simple_format(@ownerprofile.aboutme)%></p>
+            <p><%= simple_format(@pmcprofile.aboutme)%></p>
             <h3>Nick Name</h3>
-            <p><%= @ownerprofile.nick_name%></p>
+            <p><%= @pmcprofile.nick_name%></p>
             <h3>Seniority</h3>
-            <p><%= @ownerprofile.seniority%></p>
+            <p><%= @pmcprofile.seniority%></p>
             <h3>Age</h3>
-            <p><%= @ownerprofile.age%></p>
+            <p><%= @pmcprofile.age%></p>
             <h3>Education</h3>
-            <p><%= simple_format(@ownerprofile.education)%></p>
+            <p><%= simple_format(@pmcprofile.education)%></p>
             <hr>
           <%=
           if current_user
             if current_user.usertype == "PMC" || current_user.usertype == "Admin"
-              link_to "Edit Profile", edit_profile_path, class: "button"
-            elsif current_user.teamowner
-              if current_user.teamowner.id == @ownerprofile.id
-                link_to "Edit Profile", edit_teamowner_path, class: "button"
-              end
+              link_to "Edit Profile", edit_pmcmember_path, class: "button"
             end
           end
           %>
           </div><!-- /.blog-post -->
         </div><!-- /.blog-main -->
-        <% if @random_owner %>
+        <% if @random_pmc %>
           <aside class="col-sm-4 ml-sm-auto blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
-              <p style="color: grey;"><strong>Random Owner</strong></p>
-              <h4><a href="<%= profile_path(@random_participant)%>"><%= @random_owner.user.name%></a></h3>
-              <p>People call me <i><%= @random_owner.nick_name%></i></p>
+              <p style="color: grey;"><strong>Random PMC Member</strong></p>
+              <h4><a href="<%= profile_path(@random_participant)%>"><%= @random_pmc.user.name%></a></h3>
+              <p>People call me <i><%= @random_pmc.nick_name%></i></p>
             </div>
         <% end %>
       </div><!-- /.row -->
