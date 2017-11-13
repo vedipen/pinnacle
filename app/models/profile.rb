@@ -12,4 +12,5 @@ class Profile < ApplicationRecord
   validates :image, presence: true
   validates :room, presence: true
   validates :phone, presence: true
+  validates :availability, presence: true
 end

@@ -166,6 +166,8 @@ h6,
             <p><%= @profile.age%></p>
             <h3>Education</h3>
             <p><%= simple_format(@profile.education)%></p>
+            <h3>Availability</h3>
+            <p><%= simple_format(@profile.availability)%></p>
             <hr>
           <%=
           if current_user
