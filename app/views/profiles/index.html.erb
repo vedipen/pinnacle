@@ -79,7 +79,7 @@
                   <p class="blog-post-meta"><%= time_ago_in_words(profile.created_at)%> ago</p>
                   <hr>
                   <h3>About Me</h3>
-                  <p><%= profile.about_me%></p>
+                  <p><%= simple_format(profile.about_me)%></p>
                 </p>
               </div>
             <% end %>

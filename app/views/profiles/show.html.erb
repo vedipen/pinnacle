@@ -153,19 +153,19 @@ h6,
             </div>
             <hr>
             <h3>About Me</h3>
-            <p><%= @profile.about_me%></p>
+            <p><%= simple_format(@profile.about_me)%></p>
             <h3>Nick Name</h3>
             <p><%= @profile.nick_name%></p>
             <h3>Strengths</h3>
-            <p><%= @profile.strengths%></p>
+            <p><%= simple_format(@profile.strengths)%></p>
             <h3>Weaknesses</h3>
-            <p><%= @profile.weakness%></p>
+            <p><%= simple_format(@profile.weakness)%></p>
             <h3>Seniority</h3>
             <p><%= @profile.seniority%></p>
             <h3>Age</h3>
             <p><%= @profile.age%></p>
             <h3>Education</h3>
-            <p><%= @profile.education%></p>
+            <p><%= simple_format(@profile.education)%></p>
             <hr>
           <%=
           if current_user
