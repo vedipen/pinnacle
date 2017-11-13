@@ -1,0 +1,186 @@
+<style>
+/*
+ * Globals
+ */
+
+@media (min-width: 48em) {
+  .container {
+    font-size: 18px;
+  }
+}
+
+.container .body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+}
+
+.container .h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+.container {
+  max-width: 60rem;
+}
+
+
+/* Nav links */
+.nav-link {
+  position: relative;
+  padding: 1rem;
+  font-weight: 500;
+  color: #cdddeb;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+/* Active state gets a caret at the bottom */
+.nav-link.active {
+  color: #fff;
+}
+.nav-link.active::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -.3rem;
+  vertical-align: middle;
+  content: "";
+  border-right: .3rem solid transparent;
+  border-bottom: .3rem solid;
+  border-left: .3rem solid transparent;
+}
+
+
+/*
+ * Blog name and description
+ */
+
+.blog-header {
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  border-bottom: .05rem solid #eee;
+}
+.blog-title {
+  margin-bottom: 0;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.blog-description {
+  font-size: 1.1rem;
+  color: #999;
+}
+
+@media (min-width: 40em) {
+  .blog-title {
+    font-size: 3.5rem;
+  }
+}
+
+
+/*
+ * Main column and sidebar layout
+ */
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+  padding: 1rem;
+}
+.sidebar-module-inset {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: .25rem;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+  margin-bottom: 0;
+}
+
+
+
+/*
+ * Blog posts
+ */
+
+.blog-post {
+  margin-bottom: 4rem;
+}
+.blog-post-title {
+  margin-bottom: .25rem;
+  font-size: 2.5rem;
+}
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #999;
+}
+
+
+</style>
+<main role="main" class="container">
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+            <h1 class="blog-post-title"><%= @ownerprofile.user.name %></h1>
+            <p class="blog-post-meta"><%= time_ago_in_words(@ownerprofile.created_at)%> ago</a></p>
+            <hr>
+            <hr>
+            <h3>About Me</h3>
+            <p><%= simple_format(@ownerprofile.aboutme)%></p>
+            <h3>Nick Name</h3>
+            <p><%= @ownerprofile.nick_name%></p>
+            <h3>Seniority</h3>
+            <p><%= @ownerprofile.seniority%></p>
+            <h3>Age</h3>
+            <p><%= @ownerprofile.age%></p>
+            <h3>Education</h3>
+            <p><%= simple_format(@ownerprofile.education)%></p>
+            <hr>
+          <%=
+          if current_user
+            if current_user.usertype == "PMC" || current_user.usertype == "Admin"
+              link_to "Edit Profile", edit_profile_path, class: "button"
+            elsif current_user.teamowner
+              if current_user.teamowner.id == @ownerprofile.id
+                link_to "Edit Profile", edit_profile_path, class: "button"
+              end
+            end
+          end
+          %>
+          </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+        <% if @random_participant %>
+          <aside class="col-sm-4 ml-sm-auto blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+              <p style="color: grey;"><strong>Random Participant</strong></p>
+              <h4><a href="<%= profile_path(@random_participant)%>"><%= @random_participant.user.name%></a></h3>
+              <p>People call me <i><%= @random_participant.nick_name%></i></p>
+            </div>
+        <% end %>
+      </div><!-- /.row -->
+
+    </main><!-- /.container -->

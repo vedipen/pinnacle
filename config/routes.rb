@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   end
   resources :profiles
   resource :profile
+  resources :teamowners
+  resource :teamowner
   root 'posts#index'
 end
