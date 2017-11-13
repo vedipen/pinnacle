@@ -180,14 +180,14 @@ h6,
           %>
           </div><!-- /.blog-post -->
         </div><!-- /.blog-main -->
-
-        <aside class="col-sm-4 ml-sm-auto blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-            <p style="color: grey;"><strong>Random Participant</strong></p>
-            <h4><a href="<%= profile_path(@random_participant)%>"><%= @random_participant.user.name%></a></h3>
-            <p>People call me <i><%= @random_participant.nick_name%></i></p>
-          </div>
-
+        <% if @random_participant %>
+          <aside class="col-sm-4 ml-sm-auto blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+              <p style="color: grey;"><strong>Random Participant</strong></p>
+              <h4><a href="<%= profile_path(@random_participant)%>"><%= @random_participant.user.name%></a></h3>
+              <p>People call me <i><%= @random_participant.nick_name%></i></p>
+            </div>
+        <% end %>
       </div><!-- /.row -->
 
     </main><!-- /.container -->
