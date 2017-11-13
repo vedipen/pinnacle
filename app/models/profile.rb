@@ -10,4 +10,6 @@ class Profile < ApplicationRecord
   validates :education, presence: true
   validates :nick_name, presence: true
   validates :image, presence: true
+  validates :room, presence: true
+  validates :phone, presence: true
 end
