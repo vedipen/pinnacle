@@ -7,6 +7,12 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore tmp images localhost
+/public/system/posts/images/*
+/public/system/pmcmembers/images/*
+/public/system/profiles/images/*
+/public/system/teamowners/images/*
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
