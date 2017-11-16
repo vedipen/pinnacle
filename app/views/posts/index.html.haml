@@ -31,6 +31,6 @@
 							%i.fa.fa-comments-o
 							= post.comments.count
 						%span
-							= link_to like_post_path(@post), method: :get, class: "data" do
+							= link_to like_post_path(post), method: :get, class: "data" do
 								%i.fa.fa-thumbs-o-up
 								= post.get_likes.size
