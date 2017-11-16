@@ -28,7 +28,7 @@
 						= post.user.name
 					%p.buttons
 						%span
-							= link_to post do
+							= link_to post, class: "data" do
 								%i.fa.fa-comments-o
 								= post.comments.count
 						%span
