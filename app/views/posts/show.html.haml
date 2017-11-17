@@ -43,8 +43,9 @@
 									%i.fa.fa-comments-o
 									= @random_post.comments.count
 								%span
-									%i.fa.fa-thumbs-o-up
-									= @random_post.get_likes.size
+									= link_to like_post_path(@random_post), method: :get, class: "data" do
+										%i.fa.fa-thumbs-o-up
+										= @random_post.get_likes.size
 
 #comments
 	%h2.comment_count= pluralize(@post.comments.count, "Comment")
