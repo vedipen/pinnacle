@@ -21,7 +21,7 @@ class TeamownersController < ApplicationController
   def create
     @ownerprofile = current_user.build_teamowner(owner_params)
 
-    if @ownerprofile.save!
+    if @ownerprofile.save
       redirect_to root_path
     else
       render 'new'

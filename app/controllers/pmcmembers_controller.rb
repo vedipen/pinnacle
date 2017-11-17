@@ -21,7 +21,7 @@ class PmcmembersController < ApplicationController
   def create
     @pmcprofile = current_user.build_pmcmember(pmc_params)
 
-    if @pmcprofile.save!
+    if @pmcprofile.save
       redirect_to root_path
     else
       render 'new'
