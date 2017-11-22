@@ -1,14 +1,14 @@
 = simple_form_for @profile do |f|
-  = f.input :image
+  = f.input :image, label: 'Image (Prefered Type - Square)'
   = f.input :about_me
   = f.input :strengths, label: 'Strengths (Write in points, minimum 3)'
   = f.input :weakness, label: 'Weaknesses (Write in points, minimum 3)'
-  = f.input :seniority, label: 'Seniority (Years in Hostel)'
+  = f.input :seniority, label: 'Seniority (Current Year in Hostel)'
   = f.input :age
   = f.input :education, label: 'Education (Eg. 3rd Year Mechanical Engineer at VJTI)'
   = f.input :nick_name, label: 'Nick Name'
   = f.input :room, label: 'Room Number'
   = f.input :phone, label: 'Mobile'
-  = f.input :availability, label: 'Availability (Eg. Present Throughout)'
+  = f.input :availability, label: 'Availability (Eg. Present Throughout, Leave on "25/01/18") (Academic timings would be taken care of during event scheduling)'
 
   = f.button :submit
