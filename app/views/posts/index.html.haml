@@ -8,6 +8,13 @@
 		%br/
 		%span
 			Lets get started!
+			- if current_user.usertype=="Participant"
+				- if current_user.profile
+
+				- else
+					%br/
+					Please complete your 
+					= link_to "Pinnacle Profile", new_profile_path
 - else
 	%p#intro
 		Welcome to Pinnacle '18
