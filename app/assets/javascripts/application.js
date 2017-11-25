@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
 $(function() {
         $('.material-card > .mc-btn-action').click(function () {

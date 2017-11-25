@@ -53,10 +53,10 @@
             <%=
             if current_user
               if current_user.usertype == "Admin"
-                link_to "Edit Profile", edit_teamowner_path, class: "button"
+                link_to "Edit Profile", edit_teamowner_path, class: "btn btn-primary"
               elsif current_user.teamowner
                 if current_user.teamowner.id == @ownerprofile.id
-                  link_to "Edit Profile", edit_teamowner_path, class: "button"
+                  link_to "Edit Profile", edit_teamowner_path, class: "btn btn-primary"
                 end
               end
             end

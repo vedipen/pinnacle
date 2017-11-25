@@ -53,7 +53,7 @@
             <%=
             if current_user
               if current_user.usertype == "Admin"
-                link_to "Edit Profile", edit_pmcmember_path, class: "button"
+                link_to "Edit Profile", edit_pmcmember_path, class: "btn btn-primary"
               elsif current_user.pmcmember
                 if current_user.pmcmember.id == @pmcprofile.id
                   link_to "Edit Profile", edit_pmcmember_path, class: "btn btn-primary"
@@ -61,9 +61,10 @@
               end
             end
             %>
-            <br><br>
             <br>
-          
+            <br>
+            <br>
+
           </div><!-- /.blog-post -->
         </div><!-- /.blog-main -->
         <% if @random_pmc %>
