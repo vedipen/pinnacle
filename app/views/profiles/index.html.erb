@@ -23,7 +23,7 @@
                 </h2>
                 <div class="mc-content">
                     <div class="img-container">
-                        <img class="img-responsive" style="height: 280px; width: 100%; display: block;" src="<%= profile.image%>">
+                        <a href="<%= profile_path(profile)%>"><img class="img-responsive" style="height: 280px; width: 100%; display: block;" src="<%= profile.image%>"></a>
                     </div>
                     <div class="mc-description">
                         <%= simple_format(profile.about_me)%>

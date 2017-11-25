@@ -1,93 +1,48 @@
-<style>
-.mainone body {
-  min-height: 75rem; /* Can be removed; just added for demo purposes */
-}
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Hey <%=
+    if user_signed_in?
+      current_user.name + "!"
+    end
+    %></h1>
+    <p class="lead text-muted">Our fellow Pinnacle team owners</p>
+  </div>
+</section>
 
-.mainone .navbar {
-  margin-bottom: 0;
-}
 
-.mainone .border {
-  border: 2px solid #e9ecef!important;
-}
-
-.jumbotron {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  margin-bottom: 0;
-  background-color: #fff;
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-}
-
-.album {
-  min-height: 50rem; /* Can be removed; just added for demo purposes */
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background-color: #f7f7f7;
-}
-
-.card {
-  float: left;
-  width: 33.333%;
-  padding: .75rem;
-  margin-bottom: 2rem;
-  border: 0;
-}
-
-.card > img {
-  margin-bottom: .75rem;
-}
-
-.card-text {
-  font-size: 85%;
-}
-
-</style>
-</div>
-    <main role="main" class="mainone">
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hey <%=
-          if user_signed_in?
-            current_user.name + "!"
-          end
-          %></h1>
-          <p class="lead text-muted">Our fellow Pinnacle team owners</p>
+<section class="container">
+  <div class="row active-with-click">
+    <% @ownerprofile.each do |profile| %>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <article class="material-card Grey1">
+                <h2>
+                    <span><a href="<%= teamowner_path(profile)%>"><%= profile.user.name %></a></span>
+                    <strong>
+                        <p><%= profile.nick_name%></p>
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <a href="<%= teamowner_path(profile)%>"><img class="img-responsive" style="height: 280px; width: 100%; display: block;" src="<%= profile.image%>"></a>
+                    </div>
+                    <div class="mc-description">
+                        <%= simple_format(profile.aboutme)%>
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <!-- <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a class="fa fa-fw fa-facebook"></a>
+                    <a class="fa fa-fw fa-twitter"></a>
+                    <a class="fa fa-fw fa-linkedin"></a>
+                    <a class="fa fa-fw fa-google-plus"></a>
+                </div> -->
+            </article>
         </div>
-      </section>
-
-      <div class="album text-muted">
-        <div class="container">
-
-          <div class="row">
-            <% @ownerprofile.each do |profile| %>
-              <div class="card border">
-                <img style="height: 280px; width: 100%; display: block;" src="<%= profile.image%>">
-                <p class="card-text">
-                  <h2 class="blog-post-title"><a href="<%= teamowner_path(profile)%>"><%= profile.user.name %></a></h2>
-                  <p class="blog-post-meta"><%= time_ago_in_words(profile.created_at)%> ago</p>
-                  <hr>
-                  <h3>About Me</h3>
-                  <p><%= simple_format(profile.aboutme)%></p>
-                </p>
-              </div>
-            <% end %>
-
-          </div>
-
-        </div>
-      </div>
-
-    </main>
-<div class="wrapper">
+      <% end %>
+    </div>
+</section>
