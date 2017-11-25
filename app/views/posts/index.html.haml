@@ -1,43 +1,52 @@
 - if user_signed_in?
-	%p#intro
-		Hello
-		= current_user.name
+	#intro
+		%h1
+			Hello
+			= current_user.name
 		%br/
-		%span
-			PMC welcomes you to Pinnacle '18
-		%br/
-		%span
-			Lets get started!
-			- if current_user.usertype=="Participant"
-				- if current_user.profile
+		%h4
+			.text-muted
+				PMC welcomes you to Pinnacle '18
+		%h4
+			.text-muted
+				Lets get started!
+				- if current_user.usertype=="Participant"
+					- if current_user.profile
 
-				- else
-					%br/
-					Please complete your 
-					= link_to "Pinnacle Profile", new_profile_path
+					- else
+						%br/
+						Please complete your
+						= link_to "Pinnacle Profile", new_profile_path
 - else
-	%p#intro
+	%h1#intro
 		Welcome to Pinnacle '18
-		%br/
-		%span
-			Lets get started!
-#posts
-	- @posts.each do |post|
-		.post
-			.post_image
-				= link_to (image_tag post.image.url(:small)), post
-			.post_content
-				.title
-					%h2= link_to post.title, post
-				.data.clearfix
-					%p.username
-						Shared by
-						= post.user.name
-					%p.buttons
+		%h4
+			.text-muted
+				Lets get started!
+%br/
+%br/
+%br/
+
+
+%section.container
+	.row.active-with-click
+		- @posts.each do |post|
+			.col-md-4.col-sm-6.col-xs-12
+				%article.material-card.Grey1
+					%h2
 						%span
-							%i.fa.fa-comments-o
-							= post.comments.count
-						%span
-							= link_to like_post_path(post), method: :get, class: "data" do
-								%i.fa.fa-thumbs-o-up
-								= post.get_likes.size
+							= link_to post.title, post
+						%strong
+							%i.fa.fa-fw.fa-star
+							Shared by
+							= post.user.name
+							.right.some( style = "float: right;" )
+								%i.fa.fa-comments-o
+								= post.comments.count
+								= link_to like_post_path(post), method: :get, class: "data" do
+									%i.fa.fa-thumbs-o-up
+									= post.get_likes.size
+					.mc-content
+						.img-container
+							= link_to (image_tag post.image.url(:small), class: "img-responsive"), post
+							-# %img.img-responsive{:src => "http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg"}/
