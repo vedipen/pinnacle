@@ -1,107 +1,4 @@
 <style>
-/*
- * Globals
- */
-
-@media (min-width: 48em) {
-  .container {
-    font-size: 18px;
-  }
-}
-
-.container .body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: #555;
-}
-
-.container .h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  color: #333;
-}
-
-
-/*
- * Override Bootstrap's default container.
- */
-
-.container {
-  max-width: 60rem;
-}
-
-
-/* Nav links */
-.nav-link {
-  position: relative;
-  padding: 1rem;
-  font-weight: 500;
-  color: #cdddeb;
-}
-.nav-link:hover,
-.nav-link:focus {
-  color: #fff;
-  background-color: transparent;
-}
-
-/* Active state gets a caret at the bottom */
-.nav-link.active {
-  color: #fff;
-}
-.nav-link.active::after {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  margin-left: -.3rem;
-  vertical-align: middle;
-  content: "";
-  border-right: .3rem solid transparent;
-  border-bottom: .3rem solid;
-  border-left: .3rem solid transparent;
-}
-
-
-/*
- * Blog name and description
- */
-
-.blog-header {
-  padding-bottom: 1.25rem;
-  margin-bottom: 2rem;
-  border-bottom: .05rem solid #eee;
-}
-.blog-title {
-  margin-bottom: 0;
-  font-size: 2rem;
-  font-weight: 400;
-}
-.blog-description {
-  font-size: 1.1rem;
-  color: #999;
-}
-
-@media (min-width: 40em) {
-  .blog-title {
-    font-size: 3.5rem;
-  }
-}
-
-
-/*
- * Main column and sidebar layout
- */
 
 /* Sidebar modules for boxing content */
 .sidebar-module {
@@ -117,33 +14,21 @@ h6,
 .sidebar-module-inset ol:last-child {
   margin-bottom: 0;
 }
-
-
-
-/*
- * Blog posts
- */
-
-.blog-post {
-  margin-bottom: 4rem;
+.side-random a {
+  color: white;
 }
-.blog-post-title {
-  margin-bottom: .25rem;
-  font-size: 2.5rem;
+.side-random {
+  margin-left: 20px;;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
-.blog-post-meta {
-  margin-bottom: 1.25rem;
-  color: #999;
-}
-
-
 </style>
+
 <main role="main" class="container">
-
       <div class="row">
-
         <div class="col-sm-8 blog-main">
-
           <div class="blog-post">
             <h1 class="blog-post-title"><%= @pmcprofile.user.name %></h1>
             <p class="blog-post-meta"><%= time_ago_in_words(@pmcprofile.created_at)%> ago</a></p>
@@ -162,29 +47,35 @@ h6,
             <p><%= @pmcprofile.age%></p>
             <h3>Education</h3>
             <p><%= simple_format(@pmcprofile.education)%></p>
-            <h3>Room</h3>
+            <h3>Room Number</h3>
             <p><%= simple_format(@pmcprofile.room)%></p>
             <hr>
-          <%=
-          if current_user
-            if current_user.usertype == "Admin"
-              link_to "Edit Profile", edit_pmcmember_path, class: "button"
-            elsif current_user.pmcmember
-              if current_user.pmcmember.id == @pmcprofile.id
+            <%=
+            if current_user
+              if current_user.usertype == "Admin"
                 link_to "Edit Profile", edit_pmcmember_path, class: "button"
+              elsif current_user.pmcmember
+                if current_user.pmcmember.id == @pmcprofile.id
+                  link_to "Edit Profile", edit_pmcmember_path, class: "btn btn-primary"
+                end
               end
             end
-          end
-          %>
+            %>
+            <br><br>
+            <br>
+          
           </div><!-- /.blog-post -->
         </div><!-- /.blog-main -->
         <% if @random_pmc %>
           <aside class="col-sm-4 ml-sm-auto blog-sidebar">
-            <div class="sidebar-module sidebar-module-inset">
-              <p style="color: grey;"><strong>Random PMC Member</strong></p>
-              <h4><a href="<%= pmcmember_path(@random_pmc)%>"><%= @random_pmc.user.name%></a></h3>
-              <p>People call me <i><%= @random_pmc.nick_name%></i></p>
-            </div>
+            <div class="card text-white bg-primary side-random">
+              <div class="card-body">
+              <strong><p>Random Owner</p></strong>
+              <hr>
+              <h3><a href="<%= pmcmember_path(@random_pmc)%>"><%= @random_pmc.user.name%></a></h3>
+              <footer><p>People call me <i><%= @random_pmc.nick_name%></i></p></footer>
+              </div>
+          </div>
         <% end %>
       </div><!-- /.row -->
 
