@@ -167,8 +167,12 @@ h6,
             <hr>
           <%=
           if current_user
-            if current_user.usertype == "PMC" || current_user.usertype == "Admin"
+            if current_user.usertype == "Admin"
               link_to "Edit Profile", edit_pmcmember_path, class: "button"
+            elsif current_user.pmcmember
+              if current_user.pmcmember.id == @pmcprofile.id
+                link_to "Edit Profile", edit_pmcmember_path, class: "button"
+              end
             end
           end
           %>

@@ -71,7 +71,7 @@ class PmcmembersController < ApplicationController
   end
 
   def same_user_or_admin_can_edit
-    if current_user.usertype == "PMC" || current_user.usertype == "Admin"
+    if current_user.usertype == "Admin"
 
     elsif current_user.pmcmember
       if current_user.pmcmember.id == @pmcprofile.id
