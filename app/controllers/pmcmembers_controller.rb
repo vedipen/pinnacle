@@ -6,7 +6,8 @@ class PmcmembersController < ApplicationController
   before_action :same_user_or_admin_can_edit, only: [:edit, :update, :destroy]
 
   def index
-    @pmcprofile = Pmcmember.all.order("created_at DESC")
+    @pmcprofile = Pmcmember.joins(:user).order("name ASC")
+
   end
 
   def show

@@ -6,7 +6,7 @@ class TeamownersController < ApplicationController
   before_action :same_user_or_admin_can_edit, only: [:edit, :update, :destroy]
 
   def index
-    @ownerprofile = Teamowner.all.order("created_at DESC")
+    @ownerprofile = Teamowner.joins(:user).order("name ASC")
   end
 
   def show

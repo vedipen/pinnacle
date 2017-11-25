@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   before_action :same_user_or_admin_can_edit, only: [:edit, :update, :destroy]
 
   def index
-    @profiles = Profile.all.order("created_at DESC")
+    @profiles = Profile.joins(:user).order("name ASC")
   end
 
   def show
