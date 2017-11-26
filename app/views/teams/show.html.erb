@@ -1,0 +1,101 @@
+<style>
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+  padding: 1rem;
+}
+.sidebar-module-inset {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: .25rem;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+  margin-bottom: 0;
+}
+.side-random a {
+  color: white;
+}
+.side-random {
+  margin-left: 20px;;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+</style>
+
+<main role="main" class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h1 class="blog-post-title"><%= @team.teamowner.user.name %></h1>
+            <p class="blog-post-meta"><%= time_ago_in_words(@team.created_at)%> ago</a></p>
+            <hr>
+            <hr>
+            <h3>Team Name</h3>
+            <p><%= @team.name%></p>
+            <h3>About Team</h3>
+            <p><%= simple_format(@team.about_team)%></p>
+            <h3>Team Owner</h3>
+            <br>
+            <section class="container">
+              <div class="row active-with-click">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <article class="material-card Grey1">
+                            <h2>
+                                <span><a href="<%= teamowner_path(@team.teamowner)%>"><%= @team.teamowner.user.name %></a></span>
+                                <strong>
+                                  <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                  <p style="display: inline;"><%= @team.teamowner.nick_name%></p>
+                                </strong>
+                            </h2>
+                            <div class="mc-content">
+                                <div class="img-container">
+                                    <a href="<%= teamowner_path(@team.teamowner)%>"><img class="img-responsive" style="height: 280px; width: 100%; display: block;" src="<%= @team.teamowner.image%>"></a>
+                                </div>
+                                <div class="mc-description">
+                                    <%= simple_format(@team.teamowner.aboutme)%>
+                                </div>
+                            </div>
+                            <a class="mc-btn-action">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <h3>Team Participants</h3>
+            <hr>
+          <%=
+          if current_user.teamowner
+            if current_user.usertype == "Admin"
+              link_to "Edit Team", edit_team_path, class: "btn btn-primary"
+            elsif current_user.teamowner.team
+              if current_user.teamowner.team.id == @team.id
+                link_to "Edit Team", edit_team_path, class: "btn btn-primary"
+              end
+            end
+          end
+          %>
+          <br>
+          <br>
+          <br>
+
+          </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+        <% if @random_team %>
+          <aside class="col-sm-4 ml-sm-auto blog-sidebar">
+            <div class="card text-white bg-primary side-random">
+              <div class="card-body">
+              <strong><p>Random Team</p></strong>
+              <hr>
+              <h3><a href="<%= team_path(@random_team)%>"><%= @random_team.user.name%></a></h3>
+              <footer><p>People call me <i><%= @random_team.name%></i></p></footer>
+              </div>
+          </div>
+        <% end %>
+      </div><!-- /.row -->
+
+    </main><!-- /.container -->

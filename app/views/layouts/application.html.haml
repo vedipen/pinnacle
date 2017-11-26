@@ -44,6 +44,8 @@
             %li
               = link_to "Participants", profiles_path
             %li
+              = link_to "Teams", teams_path
+            %li
               = link_to "Owners", teamowners_path
             %li
               = link_to "PMC", pmcmembers_path
@@ -67,6 +69,7 @@
                         = link_to "My Pinnacle Profile", new_profile_path
                       - if current_user.usertype == "Owner"
                         = link_to "My Owner Profile", new_teamowner_path
+                        = link_to "My Team Profile", new_team_path
                       - if current_user.usertype == "PMC"
                         = link_to "My PMC Profile", new_pmcmember_path
                     %li.divider

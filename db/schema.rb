@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113193120) do
+ActiveRecord::Schema.define(version: 20171126215826) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -90,6 +90,15 @@ ActiveRecord::Schema.define(version: 20171113193120) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_teamowners_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.text "about_team"
+    t.integer "teamowner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teamowner_id"], name: "index_teams_on_teamowner_id"
   end
 
   create_table "users", force: :cascade do |t|
