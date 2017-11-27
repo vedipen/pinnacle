@@ -1,14 +1,39 @@
 = simple_form_for @profile do |f|
-  = f.input :image, label: 'Image (Prefered Type - Square)'
-  = f.input :about_me
-  = f.input :strengths, label: 'Strengths (Write in points, minimum 3)'
-  = f.input :weakness, label: 'Weaknesses (Write in points, minimum 3)'
-  = f.input :seniority, label: 'Seniority (Current Year in Hostel)'
-  = f.input :age
-  = f.input :education, label: 'Education (Eg. 3rd Year Mechanical Engineer at VJTI)'
-  = f.input :nick_name, label: 'Nick Name'
-  = f.input :room, label: 'Room Number'
-  = f.input :phone, label: 'Mobile'
-  = f.input :availability, label: 'Availability (Eg. Present Throughout, Leave on "25/01/18") (Academic timings would be taken care of during event scheduling)'
+  .form-group
+    = f.input :image, label: 'Image (Prefered Type - Square)'
+    <br><br>
+    <br><br>
+    = f.input :about_me, input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :strengths, label: 'Strengths (Write in points, minimum 3)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :weakness, label: 'Weaknesses (Write in points, minimum 3)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :seniority, label: 'Seniority (Current Year in Hostel)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :age, input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :education, label: 'Education (Eg. 3rd Year Mechanical Engineer at VJTI)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :nick_name, label: 'Nick Name', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :room, label: 'Room Number', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :phone, label: 'Mobile', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
+    = f.input :availability, label: 'Availability (Eg. Present Throughout, Leave on "25/01/18") (Academic timings would be taken care of during event scheduling)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
+    <br><br>
+    <br><br>
 
-  = f.button :submit
+  .form-group
+    .col-sm-offset-2.col-sm-6
+      = f.button :submit
