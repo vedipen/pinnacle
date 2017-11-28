@@ -30,12 +30,10 @@
       <div class="row">
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
-            <h1 class="blog-post-title"><%= @team.teamowner.user.name %></h1>
+            <h1 class="blog-post-title"><%= @team.name %></h1>
             <p class="blog-post-meta"><%= time_ago_in_words(@team.created_at)%> ago</a></p>
             <hr>
             <hr>
-            <h3>Team Name</h3>
-            <p><%= @team.name%></p>
             <h3>About Team</h3>
             <p><%= simple_format(@team.about_team)%></p>
             <h3>Team Owner</h3>
@@ -67,7 +65,6 @@
                 </div>
             </section>
             <h3>Team Participants</h3>
-            <hr>
           <%=
           if current_user
             if current_user.teamowner
