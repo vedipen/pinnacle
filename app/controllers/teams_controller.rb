@@ -10,7 +10,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @user = current_user.teamowner
     @random_team = Team.where.not(id: @team).order("RANDOM()").first
   end
 
