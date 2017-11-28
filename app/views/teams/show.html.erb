@@ -69,12 +69,14 @@
             <h3>Team Participants</h3>
             <hr>
           <%=
-          if current_user.teamowner
-            if current_user.usertype == "Admin"
-              link_to "Edit Team", edit_team_path, class: "btn btn-primary"
-            elsif current_user.teamowner.team
-              if current_user.teamowner.team.id == @team.id
+          if current_user
+            if current_user.teamowner
+              if current_user.usertype == "Admin"
                 link_to "Edit Team", edit_team_path, class: "btn btn-primary"
+              elsif current_user.teamowner.team
+                if current_user.teamowner.team.id == @team.id
+                  link_to "Edit Team", edit_team_path, class: "btn btn-primary"
+                end
               end
             end
           end
