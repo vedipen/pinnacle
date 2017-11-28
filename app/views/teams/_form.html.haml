@@ -1,10 +1,10 @@
-= simple_form_for(@team, html: { class: 'form-horizontal' }) do |f|
-
-  .form-group
-    = f.input :name, label: 'Team Name', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
-    <br><br><br>
-    = f.input :about_team, input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-2 control-label ' }
-  .form-group
-    .col-sm-offset-2.col-sm-6
-      = f.button :submit, button_html: { class: 'btn btn-primary' }
-  
+<section class="container">
+<main role="main" class="container">
+= simple_form_for(@team) do |f|
+  = f.input :name, label: 'Team Name'
+  = f.input :about_team
+  = f.button :submit, button_html: { class: 'btn btn-primary' }
+</main>
+<br>
+<br>
+</section>

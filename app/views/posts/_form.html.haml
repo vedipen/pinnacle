@@ -1,7 +1,11 @@
+<section class="container">
+<main role="main" class="container">
 = simple_form_for @post do |f|
   = f.input :image
   = f.input :title
   = f.input :duration
   = f.input :description
 
-  = f.button :submit
+  = f.button :submit, class: "btn btn-primary"
+</main>
+</section>

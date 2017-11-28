@@ -1,51 +1,19 @@
 <section class="container">
 <main role="main" class="container">
 = simple_form_for @profile do |f|
-  .form-group
-    = f.input :image, label: 'Image (Prefered Type - Square)'
-  .form-group
-    = f.input :about_me, input_html: { class: 'col-sm-6 form-control' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :strengths, label: 'Strengths (Write in points, minimum 3)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :weakness, label: 'Weaknesses (Write in points, minimum 3)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :seniority, label: 'Seniority (Current Year in Hostel)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :age, input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :education, label: 'Education (Eg. 3rd Year Mechanical Engineer at VJTI)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :nick_name, label: 'Nick Name', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :room, label: 'Room Number', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :phone, label: 'Mobile', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-6 control-label ' }
-    <br><br>
-    <br><br>
-  .form-group
-    = f.input :availability, label: 'Availability (Eg. Present Throughout, Leave on "25/01/18") (Academic timings would be taken care of during event scheduling)', input_html: { class: 'col-sm-6' } , label_html: { class: 'col-sm-12 control-label ' }
-    <br><br>
-    <br><br>
-
-  .form-group
-    .col-sm-offset-2.col-sm-6
-      = f.button :submit, class: "btn btn-primary"
+  = f.input :image
+  = f.input :about_me, label: 'About Me'
+  = f.input :strengths, label: 'Strengths (Write in points, minimum 3)'
+  = f.input :weakness, label: 'Weaknesses (Write in points, minimum 3)'
+  = f.input :seniority, label: 'Seniority (Current Year in Hostel) (Integer Input)', input_html: { min: '1'}
+  = f.input :age, label: 'Age (Integer Input)', input_html: { min: '10'}
+  = f.input :education, label: 'Education (Eg. 3rd Year Mechanical Engineer at VJTI)'
+  = f.input :nick_name, label: 'Nick Name'
+  = f.input :room, label: 'Room Number'
+  = f.input :phone, label: 'Mobile'
+  = f.input :availability, label: 'Availability (Eg. Present Throughout, Leave on "25/01/18") (Academic timings would be taken care of during event scheduling)'
+  = f.button :submit,  class: "btn btn-primary"
 </main>
+<br>
+<br>
 </section>
