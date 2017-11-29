@@ -41,7 +41,7 @@
             <section class="container">
               <div class="row active-with-click">
                     <div class="col-md-4 col-sm-6 col-xs-12">
-                        <article class="material-card Grey1">
+                        <article class="material-card Grey1" style="margin-bottom: 0.8em;">
                             <h2>
                                 <span><a href="<%= teamowner_path(@team.teamowner)%>"><%= @team.teamowner.user.name %></a></span>
                                 <strong>
@@ -65,6 +65,36 @@
                 </div>
             </section>
             <h3>Team Participants</h3>
+            <br>
+            <section class="container">
+              <div class="row active-with-click">
+                  <% @team.profiles.each do |profile| %>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <article class="material-card Grey1">
+                            <h2>
+                                <span><a href="<%= profile_path(profile)%>"><%= profile.user.name %></a></span>
+                                <strong>
+                                  <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                  <p style="display: inline;">Seniority - <%= profile.seniority%> years</p>
+                                </strong>
+                            </h2>
+                            <div class="mc-content">
+                                <div class="img-container">
+                                    <a href="<%= profile_path(profile)%>"><img class="img-responsive" style="height: 280px; width: 100%; display: block;" src="<%= profile.image%>"></a>
+                                </div>
+                                <div class="mc-description">
+                                    <%= simple_format(profile.about_me)%>
+                                </div>
+                            </div>
+                            <a class="mc-btn-action">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </article>
+                    </div>
+                  <% end %>
+                </div>
+            </section>
+
           <%=
           if current_user
             if current_user.teamowner
