@@ -1,9 +1,10 @@
 class TeamsController < ApplicationController
-  before_action :find_team, only: [:show, :edit, :update, :destroy]
+  before_action :find_team, only: [:show, :edit, :update, :destroy, :addteam]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :already_created_team, only: [:create, :new]
   before_action :same_user_or_admin_can_edit, only: [:edit, :update, :destroy]
   before_action :authenticate_user_owner, only: [:new, :create]
+  before_action :only_admin, only: [:addteam]
 
   def index
     @teams = Team.joins(:teamowner).order("name ASC")
@@ -38,6 +39,10 @@ class TeamsController < ApplicationController
   def destroy
     @team.destroy
     redirect_to root_path
+  end
+
+  def addteam
+    @profiles = Profile.joins(:user).order("name ASC")
   end
 
   private
@@ -85,6 +90,18 @@ class TeamsController < ApplicationController
       end
     else
       redirect_to team_path(@team.id)
+    end
+  end
+
+  def only_admin
+    if current_user
+      if current_user.usertype == "Admin"
+
+      else
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
     end
   end
 

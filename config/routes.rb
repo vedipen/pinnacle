@@ -18,4 +18,8 @@ Rails.application.routes.draw do
   resource :team
 
   root 'posts#index'
+
+
+  get '/teamadd/:id', to: 'teams#addteam', as: 'add_participants_to_team'
+
 end
