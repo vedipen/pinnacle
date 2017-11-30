@@ -73,6 +73,9 @@
               <div class="card-body">
               <strong><p>Random Owner</p></strong>
               <hr>
+              <% if @random_owner.image %>
+                <%= link_to (image_tag @random_owner.image.url(:medium)), teamowner_path(@random_owner) %>
+              <% end %>
               <h3><a href="<%= teamowner_path(@random_owner)%>"><%= @random_owner.user.name%></a></h3>
               <footer><p>People call me <i><%= @random_owner.nick_name%></i></p></footer>
               </div>

@@ -33,6 +33,11 @@
             <h1 class="blog-post-title"><%= @team.name %></h1>
             <p class="blog-post-meta"><%= time_ago_in_words(@team.created_at)%> ago</a></p>
             <hr>
+            <% if @team.image %>
+              <div class="post_image_description">
+                <img src="<%= @team.image%>"></a>
+              </div>
+            <% end %>
             <hr>
             <h3>About Team</h3>
             <p><%= simple_format(@team.about_team)%></p>
@@ -127,6 +132,9 @@
               <div class="card-body">
               <strong><p>Random Team</p></strong>
               <hr>
+              <% if @random_team.image %>
+                <%= link_to (image_tag @random_team.image.url(:medium)), team_path(@random_team) %>
+              <% end %>
               <h3><a href="<%= team_path(@random_team)%>"><%= @random_team.name %></a></h3>
               <footer><p><%= @random_team.about_team%></p></footer>
               </div>

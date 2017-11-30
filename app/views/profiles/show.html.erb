@@ -69,7 +69,12 @@
                         </strong>
                     </h2>
                     <div class="mc-content">
-                        <div class="mc-description">
+                      <% if @profile.team.image %>
+                        <div class="img-container">
+                          <a href="<%= team_path(@profile.team)%>"><img class="img-responsive" style="height: 280px; width: 100%; display: block;" src="<%= @profile.team.image%>"></a>
+                        </div>
+                      <% end %>
+                      <div class="mc-description">
                             <%= simple_format(@profile.team.about_team)%>
                         </div>
                     </div>
