@@ -56,17 +56,23 @@
             <h3>Room Number</h3>
             <p><%= simple_format(@profile.room)%></p>
             <hr>
-          <%=
-          if current_user
-            if current_user.usertype == "Admin"
-              link_to "Edit Profile", edit_profile_path, class: "btn btn-primary"
-            elsif current_user.profile
-              if current_user.profile.id == @profile.id
-                link_to "Edit Profile", edit_profile_path, class: "btn btn-primary"
-              end
-            end
-          end
-          %>
+          <% if current_user %>
+            <% if current_user.usertype == "Admin" %>
+              <%= simple_form_for @profile do |f|%>
+                <h3><%= f.input :team_id, collection: @teams, label_html: { style: "font-weight: inherit;" } %></h3>
+                <%= f.input :source, as: :hidden, input_html: { value: "change_team" } %>
+                <%= f.button :submit,  class: "btn btn-primary" %>
+              <% end %>
+            <hr>
+            <% end %>
+            <% if current_user.usertype == "Admin" %>
+              <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-primary" %>
+            <% elsif current_user.profile %>
+              <% if current_user.profile.id == @profile.id %>
+                <%= link_to "Edit Profile", edit_profile_path, class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          <% end %>
           <br>
           <br>
           <br>

@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user
     @random_participant = Profile.where.not(id: @profile).order("RANDOM()").first
+    @teams = Team.all
   end
 
   def new
@@ -33,7 +34,13 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    if @profile.update(profile_params)
+    if params[:profile][:source].to_s == "change_team"
+      params[:profile].delete(:source)
+      allowed_params = admin_profile_params
+    else
+      allowed_params = profile_params
+    end
+    if @profile.update(allowed_params)
       redirect_to @profile
     else
       render 'edit'
@@ -61,6 +68,10 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:about_me, :strengths, :weakness, :seniority, :age, :education, :nick_name, :image, :room, :phone, :availability)
+  end
+
+  def admin_profile_params
+    params.require(:profile).permit(:team_id)
   end
 
   def already_created_profile
