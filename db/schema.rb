@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129204917) do
+ActiveRecord::Schema.define(version: 20171130221051) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 20171129204917) do
     t.string "phone"
     t.string "availability"
     t.integer "team_id"
+    t.integer "base_price", default: 10
+    t.integer "sell_price", default: 0
     t.index ["team_id"], name: "index_profiles_on_team_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

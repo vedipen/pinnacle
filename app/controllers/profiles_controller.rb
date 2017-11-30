@@ -71,7 +71,7 @@ class ProfilesController < ApplicationController
   end
 
   def admin_profile_params
-    params.require(:profile).permit(:team_id)
+    params.require(:profile).permit(:team_id,:base_price,:sell_price)
   end
 
   def already_created_profile

@@ -59,9 +59,11 @@
           <% if current_user %>
             <% if current_user.usertype == "Admin" %>
               <%= simple_form_for @profile do |f|%>
-                <h3><%= f.input :team_id, collection: @teams, label_html: { style: "font-weight: inherit;" } %></h3>
                 <%= f.input :source, as: :hidden, input_html: { value: "change_team" } %>
-                <%= f.button :submit,  class: "btn btn-primary" %>
+                <h4><%= f.input :team_id, collection: @teams, label_html: { style: "font-weight: inherit;" } %></h4>
+                <h4><%= f.input :base_price, label: "Base Price (BitCoins)", label_html: { style: "font-weight: inherit;" }, input_html: { min: '0'} %></h4>
+                <h4><%= f.input :sell_price, label: "Sold For (BitCoins)", label_html: { style: "font-weight: inherit;" }, input_html: { min: '0'} %></h4>
+                <%= f.button :submit, "Update Auction Details",  class: "btn btn-primary" %>
               <% end %>
             <hr>
             <% end %>
