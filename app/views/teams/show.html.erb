@@ -98,13 +98,6 @@
           <%=
           if current_user
             if current_user.usertype == "Admin"
-              link_to "Add Participants", add_participants_to_team_path, class: "btn btn-primary"
-            end
-          end
-          %>
-          <%=
-          if current_user
-            if current_user.usertype == "Admin"
               link_to "Edit Team", edit_team_path, class: "btn btn-primary"
             elsif current_user.teamowner
               if current_user.teamowner.team

@@ -1,7 +1,0 @@
-<% @profiles.each do |profile| %>
-  <% if !profile.team %>
-    <div>
-      <a href="<%= profile_path(profile)%>"><%= profile.user.name %>
-    </div>
-  <% end %>
-<% end %>
