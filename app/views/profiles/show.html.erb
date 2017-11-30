@@ -55,6 +55,32 @@
             <p><%= simple_format(@profile.availability)%></p>
             <h3>Room Number</h3>
             <p><%= simple_format(@profile.room)%></p>
+            <% if @profile.team %>
+            <h3>Team</h3><br>
+            <section class="container">
+            <div class="row active-with-click">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Grey1">
+                    <h2>
+                        <span><a href="<%= team_path(@profile.team)%>"><%= @profile.team.name %></a></span>
+                        <strong>
+                          <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                          <p style="display: inline;"><%= @profile.team.teamowner.user.name%></p>
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="mc-description">
+                            <%= simple_format(@profile.team.about_team)%>
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </article>
+            </div>
+            </div>
+            </section>
+            <% end %>
             <hr>
           <% if current_user %>
             <% if current_user.usertype == "Admin" %>

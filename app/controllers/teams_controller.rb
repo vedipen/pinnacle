@@ -11,6 +11,10 @@ class TeamsController < ApplicationController
 
   def show
     @random_team = Team.where.not(id: @team).order("RANDOM()").first
+    @current_price = @team.initial_price
+    @team.profiles.each do |profile|
+      @current_price -= profile.sell_price
+    end
   end
 
   def new

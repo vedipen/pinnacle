@@ -70,7 +70,7 @@
               <div class="row active-with-click">
                   <% @team.profiles.each do |profile| %>
                     <div class="col-md-4 col-sm-6 col-xs-12">
-                        <article class="material-card Grey1">
+                        <article class="material-card Grey1" style="margin-bottom: 0.8em;">
                             <h2>
                                 <span><a href="<%= profile_path(profile)%>"><%= profile.user.name %></a></span>
                                 <strong>
@@ -94,7 +94,14 @@
                   <% end %>
                 </div>
             </section>
-
+            <h3>Team Budget</h3>
+            <br>
+            <p>Initial Budget (BitCoins) => <%= @team.initial_price%></p>
+            <% @team.profiles.each do |profile| %>
+              <p>Cost of buying <i><%= profile.user.name%></i> => <%= profile.sell_price %></p>
+            <% end %>
+            <br>
+            <p>Current Budget (BitCoins) => <%= @current_price%></p><br><br>
           <%=
           if current_user
             if current_user.usertype == "Admin"
