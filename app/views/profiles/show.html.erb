@@ -55,6 +55,8 @@
             <p><%= simple_format(@profile.availability)%></p>
             <h3>Room Number</h3>
             <p><%= simple_format(@profile.room)%></p>
+            <h3>Base Price (BitCoins)</h3>
+            <p><%= @profile.base_price %></p>
             <% if @profile.team %>
             <h3>Team</h3><br>
             <section class="container">

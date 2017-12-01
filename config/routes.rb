@@ -20,4 +20,7 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  get 'random/select' => 'random#select'
+  get 'random' => 'random#index'
+
 end

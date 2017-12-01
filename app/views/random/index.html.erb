@@ -1,0 +1,24 @@
+<section class="container">
+  <main role="main" class="container">
+    <section class="jumbotron text-center">
+      <div class="container">
+        <% if @count > 0 %>
+          <%= link_to random_select_path , { :class=>"btn btn-primary", :target=>"_blank", onClick: "openWindowReload(this)" } do %>
+              <p>Take me to a random unsold Participant! (Remaining : <%= @count%>)</p>
+          <% end %>
+        <% else %>
+          <%= link_to root_path , { :class=>"btn btn-primary", :target=>"_blank" } do %>
+            <p>No unsold Participant :)</p>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
+  </main>
+</section>
+<script>
+function openWindowReload(link) {
+	var href = link.href;
+	window.open(href,'_blank');
+	document.location.reload(true)
+}
+</script>
