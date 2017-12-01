@@ -87,6 +87,9 @@
                         = link_to "My Team Profile", new_team_path
                       - if current_user.usertype == "PMC"
                         = link_to "My PMC Profile", new_pmcmember_path
+                      - if current_user.usertype == "Admin"
+                        = link_to "Admin", "admin", target: "_blank"
+                        = link_to "Auction", random_path
                     %li.divider
                     %li
                       = link_to "Log Out", destroy_user_session_path, :method => :delete
