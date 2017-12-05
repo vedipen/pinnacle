@@ -1,6 +1,6 @@
 # Pinnacle
 
-Code for Pinnacle 18'
+Code for [Pinnacle](http://pinnacle.vmkb.in) 18'
   
 * Uses AWS S3 container
 * PG database for production and mySQL for testing
