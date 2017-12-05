@@ -1,24 +1,12 @@
-# README
+# Pinnacle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Code for Pinnacle 18'
+  
+* Uses AWS S3 container
+* PG database for production and mySQL for testing
+* FrontEnd credits - Bootstrap
+* PaperClip for managing images
+* Content by PMC and fellow participants
+  
+Todo -
+* ~~~Add Google Analytics~~~
