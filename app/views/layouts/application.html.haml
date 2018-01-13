@@ -85,6 +85,7 @@
                       - if current_user.usertype == "Owner"
                         = link_to "My Owner Profile", new_teamowner_path
                         = link_to "My Team Profile", new_team_path
+                        = "Hidden Points " + current_user.teamowner.hidden_points.to_s
                       - if current_user.usertype == "PMC"
                         = link_to "My PMC Profile", new_pmcmember_path
                       - if current_user.usertype == "Admin"

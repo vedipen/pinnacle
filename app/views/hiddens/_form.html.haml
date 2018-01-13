@@ -1,0 +1,11 @@
+<section class="container">
+<main role="main" class="container">
+= simple_form_for(@hidden) do |f|
+  = f.input :event_name
+  = f.input :team_name
+  = f.input :amount
+  = f.button :submit, button_html: { class: 'btn btn-primary' }
+</main>
+<br>
+<br>
+</section>

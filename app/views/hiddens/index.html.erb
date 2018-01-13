@@ -1,0 +1,28 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Hey <%=
+    if user_signed_in?
+      current_user.name + "!"
+    end
+    %></h1>
+    <p class="lead text-muted">Hidden Points Transactions for <%=
+    current_user.teamowner.team.name + "!"
+    %></p>
+  </div>
+</section>
+
+<br>
+<br>
+<br>
+
+<section class="container">
+  <div class="row active-with-click">
+    <% @hiddens.each do |profile| %>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+         <%= profile.team_name %>
+         <%= profile.event_name %>
+         <%= profile.amount %>
+        </div>
+      <% end %>
+    </div>
+</section>

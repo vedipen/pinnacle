@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112060207) do
+ActiveRecord::Schema.define(version: 20180113143506) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20180112060207) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "hiddens", force: :cascade do |t|
+    t.string "team_name"
+    t.string "event_name"
+    t.integer "amount"
+    t.integer "teamowner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teamowner_id"], name: "index_hiddens_on_teamowner_id"
   end
 
   create_table "pmcmembers", force: :cascade do |t|
@@ -52,6 +62,7 @@ ActiveRecord::Schema.define(version: 20180112060207) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.boolean "events", default: true
+    t.boolean "hidden_transactions", default: true
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -94,6 +105,7 @@ ActiveRecord::Schema.define(version: 20180112060207) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.integer "hidden_points", default: 75
     t.index ["user_id"], name: "index_teamowners_on_user_id"
   end
 
