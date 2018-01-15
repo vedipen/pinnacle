@@ -15,8 +15,8 @@ class ViriController < ApplicationController
     @viri = Virus.joins(:teamowner).order("team_id ASC")
     @virus =  current_user.teamowner.viri.build
     @tempp = Post.where(events: true, hidden_transactions: true)
-    if @tempp.size==0
-      flash[:alert] = "No event available for transaction"
+    if @tempp.size==0 || current_user.teamowner.hidden_virus < 1
+      flash[:alert] = "No event or virus available for transaction."
       redirect_to viri_path
     end
   end
@@ -33,7 +33,7 @@ class ViriController < ApplicationController
         end
       end
       if @flag==true
-        flash[:alert] = "Event " + @virus.post.title + " already has our virus for team " + @virus.team.name + "."
+        flash[:alert] = "Event " + @virus.post.title + " already has your virus for team " + @virus.team.name + "."
         redirect_to new_virus_path
       else
         @sum+=1
@@ -88,8 +88,8 @@ class ViriController < ApplicationController
     if current_user.usertype == "Admin"
 
     elsif current_user.teamowner
-      if current_user.teamowner.virus
-        if current_user.teamowner.virus.id == @virus.id
+      if current_user.teamowner
+        if current_user.teamowner == @virus.teamowner
 
         else
           redirect_to root_path

@@ -4,6 +4,7 @@ class Teamowner < ApplicationRecord
   has_one :team
   has_many :hiddens
   has_many :viri
+  has_many :anti_viri
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates :aboutme, presence: true
   validates :seniority, presence: true

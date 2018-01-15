@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115123113) do
+ActiveRecord::Schema.define(version: 20180115195757) do
+
+  create_table "anti_viri", force: :cascade do |t|
+    t.integer "teamowner_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_anti_viri_on_post_id"
+    t.index ["teamowner_id"], name: "index_anti_viri_on_teamowner_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -109,6 +118,7 @@ ActiveRecord::Schema.define(version: 20180115123113) do
     t.datetime "image_updated_at"
     t.integer "hidden_points", default: 75
     t.integer "hidden_virus", default: 2
+    t.integer "hidden_antivirus", default: 1
     t.index ["user_id"], name: "index_teamowners_on_user_id"
   end
 

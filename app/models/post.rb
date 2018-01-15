@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_many :hiddens
+  has_many :viri
+  has_many :anti_viri
   has_attached_file :image, styles: { medium: "700x500#", small: "350x250>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates :title, presence: true

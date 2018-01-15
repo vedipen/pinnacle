@@ -16,21 +16,21 @@
 <br>
 <section class="container">
   <div class="row">
-    <h2>Hidden Viruses</h2>
-  <h4><%= "Hidden Virus Left : " + current_user.teamowner.hidden_virus.to_s%><h4>
+    <h2>Hidden AntiVirus</h2>
+  <h4><%= "Hidden AntiVirus Left : " + current_user.teamowner.hidden_antivirus.to_s%><h4>
   </div>
   <br>
   <ul>
-  <% if @viri!=nil %>
-    <% @viri.each do |profile| %>
+  <% if @anti_viri!=nil %>
+    <% @anti_viri.each do |profile| %>
       <% if profile.teamowner == current_user.teamowner %>
-        <div class="row active-with-click"><h4>You planted virus on team <i><%= profile.teamowner.team.name %></i> for event <i><%= profile.post.title %></i> at <%= profile.created_at.in_time_zone('Kolkata').to_formatted_s(:short)  %></h4>
+        <div class="row active-with-click"><h4>You planted AntiVirus for event <i><%= profile.post.title %></i> at <%= profile.created_at.in_time_zone('Kolkata').in_time_zone('Kolkata').to_formatted_s(:short)  %></h4>
         </div>
         <br>
       <% end %>
     <% end %>
     </ul>
-    <%= link_to "+", new_virus_path, class: "data btn btn-primary"%><br><br>
+    <%= link_to "+", new_anti_virus_path, class: "data btn btn-primary"%><br><br>
   <% end %>
   <br>
   <br>

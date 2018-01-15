@@ -1,0 +1,11 @@
+<section class="container">
+<main role="main" class="container">
+= simple_form_for(@anti_virus) do |f|
+  = f.input :post_id, label: 'Event', include_blank: false, include_hidden: false, collection: Post.where(events: true, hidden_transactions: true), label_html: { style: "font-weight: inherit;" }
+  = f.button :submit, class: 'btn btn-primary'
+</main>
+<br>
+= link_to "Back", anti_viri_path, class: "data btn btn-primary"
+<br>
+<br>
+</section>

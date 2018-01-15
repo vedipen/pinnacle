@@ -85,9 +85,12 @@
                       - if current_user.usertype == "Owner"
                         = link_to "My Owner Profile", new_teamowner_path
                         = link_to "My Team Profile", new_team_path
-                        - if current_user.teamowner != nil
+                      - if current_user.teamowner != nil
+                        %li.divider
+                        %li
                           = link_to "Hidden Points " + current_user.teamowner.hidden_points.to_s + "MB", hiddens_path
                           = link_to "Hidden Viruses " + current_user.teamowner.hidden_virus.to_s, viri_path
+                          = link_to "Hidden AntiVirus " + current_user.teamowner.hidden_antivirus.to_s, anti_viri_path
                       - if current_user.usertype == "PMC"
                         = link_to "My PMC Profile", new_pmcmember_path
                       - if current_user.usertype == "Admin"

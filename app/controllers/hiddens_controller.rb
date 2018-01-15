@@ -15,8 +15,8 @@ class HiddensController < ApplicationController
     @hiddens = Hidden.joins(:teamowner).order("team_id ASC")
     @hidden =  current_user.teamowner.hiddens.build
     @tempp = Post.where(events: true, hidden_transactions: true)
-    if @tempp.size==0
-      flash[:alert] = "No event available for transaction"
+    if @tempp.size==0 || current_user.teamowner.hidden_points < 1
+      flash[:alert] = "No event or hidden point available for transaction."
       redirect_to hiddens_path
     end
   end

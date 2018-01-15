@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :hiddens
   resource :hidden
   resources :viri
+  resources :anti_viri
   root 'posts#index'
 
   get 'random/select' => 'random#select'
