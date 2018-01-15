@@ -3,6 +3,7 @@ class Teamowner < ApplicationRecord
   has_attached_file :image, styles: { medium: "700x500#", small: "350x250>" }
   has_one :team
   has_many :hiddens
+  has_many :viri
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates :aboutme, presence: true
   validates :seniority, presence: true

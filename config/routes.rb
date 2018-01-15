@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resource :team
   resources :hiddens
   resource :hidden
+  resources :viri
   root 'posts#index'
 
   get 'random/select' => 'random#select'

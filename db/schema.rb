@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113152016) do
+ActiveRecord::Schema.define(version: 20180115123113) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20180113152016) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "hidden_points", default: 75
+    t.integer "hidden_virus", default: 2
     t.index ["user_id"], name: "index_teamowners_on_user_id"
   end
 
@@ -142,6 +143,17 @@ ActiveRecord::Schema.define(version: 20180113152016) do
     t.string "usertype"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "viri", force: :cascade do |t|
+    t.integer "teamowner_id"
+    t.integer "team_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_viri_on_post_id"
+    t.index ["team_id"], name: "index_viri_on_team_id"
+    t.index ["teamowner_id"], name: "index_viri_on_teamowner_id"
   end
 
   create_table "votes", force: :cascade do |t|
