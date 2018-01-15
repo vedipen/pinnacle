@@ -1,11 +1,13 @@
 <section class="container">
 <main role="main" class="container">
 = simple_form_for(@hidden) do |f|
-  = f.input :event_name
-  = f.input :team_name
-  = f.input :amount
-  = f.button :submit, button_html: { class: 'btn btn-primary' }
+  = f.input :post_id, label: 'Event', include_blank: false, include_hidden: false, collection: Post.where(events: true, hidden_transactions: true), label_html: { style: "font-weight: inherit;" }
+  = f.input :team_id, include_blank: false, include_hidden: false, collection: Team.all, label_html: { style: "font-weight: inherit;" }
+  = f.input :amount, include_blank: false, include_hidden: false, collection: 1..[15,current_user.teamowner.hidden_points].min
+  = f.button :submit, class: 'btn btn-primary'
 </main>
+<br>
+= link_to "Back", hiddens_path, class: "data btn btn-primary"
 <br>
 <br>
 </section>

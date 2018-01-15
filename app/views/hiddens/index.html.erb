@@ -14,15 +14,24 @@
 <br>
 <br>
 <br>
-
 <section class="container">
-  <div class="row active-with-click">
+  <div class="row">
+    <h2>Hidden Transactions</h2>
+  <h4><%= "Hidden Points Left : " + current_user.teamowner.hidden_points.to_s + "MB" %><h4>
+  </div>
+  <br>
+  <ul>
+  <% if @hiddens!=nil %>
     <% @hiddens.each do |profile| %>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-         <%= profile.team_name %>
-         <%= profile.event_name %>
-         <%= profile.amount %>
-        </div>
-      <% end %>
-    </div>
+      <div class="row active-with-click"><h4>You bet <i><%= profile.amount %>MB</i> on team <i><%= profile.teamowner.team.name %></i> for event <i><%= profile.post.title %></i> at <%= profile.created_at.to_formatted_s(:short)  %></h4>
+      </div>
+      <br>
+    <% end %>
+    </ul>
+    <%= link_to "+", new_hidden_path, class: "data btn btn-primary"%><br><br>
+  <% end %>
+  <br>
+  <br>
 </section>
+<br>
+<br>

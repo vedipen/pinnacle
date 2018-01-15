@@ -85,7 +85,7 @@
                       - if current_user.usertype == "Owner"
                         = link_to "My Owner Profile", new_teamowner_path
                         = link_to "My Team Profile", new_team_path
-                        = "Hidden Points " + current_user.teamowner.hidden_points.to_s
+                        = link_to "Hidden Points " + current_user.teamowner.hidden_points.to_s + "MB", hiddens_path
                       - if current_user.usertype == "PMC"
                         = link_to "My PMC Profile", new_pmcmember_path
                       - if current_user.usertype == "Admin"
@@ -103,7 +103,7 @@
     - if notice
       .alert.alert-dismissible.alert-success
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Well Done!</strong>
+        <strong></strong>
         = notice
     - if alert
       .alert.alert-dismissible.alert-warning

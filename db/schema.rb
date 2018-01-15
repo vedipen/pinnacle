@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113143506) do
+ActiveRecord::Schema.define(version: 20180113152016) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -23,12 +23,14 @@ ActiveRecord::Schema.define(version: 20180113143506) do
   end
 
   create_table "hiddens", force: :cascade do |t|
-    t.string "team_name"
-    t.string "event_name"
     t.integer "amount"
     t.integer "teamowner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "team_id"
+    t.integer "post_id"
+    t.index ["post_id"], name: "index_hiddens_on_post_id"
+    t.index ["team_id"], name: "index_hiddens_on_team_id"
     t.index ["teamowner_id"], name: "index_hiddens_on_teamowner_id"
   end
 
