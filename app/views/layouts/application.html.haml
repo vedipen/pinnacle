@@ -93,6 +93,8 @@
                           = link_to "Hidden AntiVirus " + current_user.teamowner.hidden_antivirus.to_s, anti_viri_path
                       - if current_user.usertype == "PMC"
                         = link_to "My PMC Profile", new_pmcmember_path
+                      - if current_user.usertype == "Spectator"
+                        = link_to "Betting Balance " + (100-current_user.bets.size*10).to_s + "MB", bets_path
                       - if current_user.usertype == "Admin"
                         = link_to "Admin", "admin", target: "_blank"
                         = link_to "Auction", random_path

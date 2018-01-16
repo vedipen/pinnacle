@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_one :profile
+  has_many :bets
   has_one :teamowner
   has_one :pmcmember
 end

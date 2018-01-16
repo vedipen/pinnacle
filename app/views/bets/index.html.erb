@@ -1,0 +1,39 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Hey <%=
+    if user_signed_in?
+      current_user.name + "!"
+    end
+    %></h1>
+    <p class="lead text-muted">Betting by <%=
+    current_user.name + "!"
+    %></p>
+  </div>
+</section>
+
+<br>
+<br>
+<br>
+<section class="container">
+  <div class="row">
+    <h2>Betting Transactions</h2>
+    <h4><%= "Betting Points Left : "+ (100-@sum1).to_s + "MB" %><h4>
+  </div>
+  <br>
+  <ul>
+  <% if @bets!=nil %>
+    <% @bets.each do |profile| %>
+      <% if profile.user == current_user %>
+        <div class="row active-with-click"><h4>You bet <i>10MB</i> on team <i><%= profile.team.name %></i> for event <i><%= profile.post.title %></i> at <%= profile.created_at.in_time_zone('Kolkata').to_formatted_s(:short) + ". Hope they win."  %></h4>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
+    </ul>
+    <%= link_to "+", new_bet_path, class: "data btn btn-primary"%><br><br>
+  <% end %>
+  <br>
+  <br>
+</section>
+<br>
+<br>
