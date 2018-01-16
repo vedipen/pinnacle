@@ -1,0 +1,43 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Hey <%=
+    if user_signed_in?
+      current_user.name + "!"
+    end
+    %></h1>
+    <p class="lead text-muted">Scoreboard</p>
+  </div>
+</section>
+
+<br>
+<br>
+<br>
+<section class="container">
+  <div class="row">
+    <h2>Current Scoreboard</h2>
+  </div>
+  <br>
+  <ul>
+  <% if @scoreboards!=nil %>
+    <% @scoreboards.each do |profile| %>
+          <h3><i><%= link_to profile.team.name, team_path(profile.team) %></i>  <i><%= profile.currentscore %></i></h3>
+          <% if user_signed_in? %>
+           <% if current_user.usertype == "Admin" %>
+             <%= link_to "Add Score", edit_scoreboard_path(profile), class: "data btn btn-primary" %>
+           <% end %>
+          <% end %>
+        <br>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if user_signed_in? %>
+    <% if current_user.usertype == "Admin" %>
+      <%= link_to "+", new_scoreboard_path, class: "data btn btn-primary"%><br>
+    <% end %>
+  <% end %>
+  <br>
+  <br>
+  <br>
+</section>
+<br>
+<br>

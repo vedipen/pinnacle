@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116091434) do
+ActiveRecord::Schema.define(version: 20180116101939) do
 
   create_table "anti_viri", force: :cascade do |t|
     t.integer "teamowner_id"
@@ -112,6 +112,14 @@ ActiveRecord::Schema.define(version: 20180116091434) do
     t.integer "sell_price", default: 0
     t.index ["team_id"], name: "index_profiles_on_team_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "scoreboards", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "currentscore", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_scoreboards_on_team_id"
   end
 
   create_table "teamowners", force: :cascade do |t|

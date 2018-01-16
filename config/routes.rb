@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :viri
   resources :anti_viri
   resources :bets
+  resources :scoreboards
   root 'posts#index'
 
   get 'random/select' => 'random#select'

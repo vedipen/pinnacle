@@ -1,0 +1,12 @@
+<section class="container">
+<main role="main" class="container">
+= simple_form_for(@scoreboard) do |f|
+  = f.input :team_id, include_blank: false, include_hidden: false, collection: Team.all, label_html: { style: "font-weight: inherit;" }
+  = f.input :currentscore, collection: [0,25,50,75,100], include_blank: false, include_hidden: false, label: 'Current Score'
+  = f.button :submit, class: 'btn btn-primary'
+</main>
+<br>
+= link_to "Back", scoreboards_path, class: "data btn btn-primary"
+<br>
+<br>
+</section>
