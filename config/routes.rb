@@ -27,11 +27,14 @@ Rails.application.routes.draw do
   resources :anti_viri
   resources :bets
   resources :scoreboards
+  resources :hiddenleaderboards
   root 'posts#index'
 
   get 'random/select' => 'random#select'
   get 'random' => 'random#index'
-  get 'scoreboard' => 'leaderboard#index'
-  get 'scoreboard/betting' => 'leaderboard#betting'
+  get 'scoreboard' => 'scoreboards#index'
+  get 'leaderboard' => 'leaderboard#index', as: 'originalscoreboard'
+  get 'hiddenleaderboard' => 'hiddenleaderboard#index', as: 'finalleaderboard'
+  get 'leaderboard/betting' => 'leaderboard#betting'
 
 end
