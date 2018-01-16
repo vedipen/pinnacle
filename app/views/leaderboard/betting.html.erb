@@ -21,7 +21,7 @@
     </thead>
     <tbody>
       <% @no = 0 %>
-      <% for i in @bets.sort_by {|_key, value| value}.reverse %>
+      <% for i in @bets.sort_by {|_key, value| value.to_i}.reverse %>
         <% @no+=1 %>
         <tr class="table-active" >
           <th scope="row"><h4><%= @no %><h4></th>

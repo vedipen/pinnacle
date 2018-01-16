@@ -20,7 +20,7 @@
   <ul>
   <% if @scoreboards!=nil %>
     <% @scoreboards.each do |profile| %>
-          <h3>Team <i><%= link_to profile.team.name, team_path(profile.team) %></i> was awarded with <i><%= profile.currentscore %></i>MB for event <i><%= profile.post.title %></i></h3>
+          <h3>Team <i><%= link_to profile.team.name, team_path(profile.team) %></i> was awarded with <i><%= profile.currentscore %></i>MB for event <i><%= profile.post.title %></i> at <i><%= profile.created_at.in_time_zone('Kolkata').to_formatted_s(:short) %></i></h3>
           <% if user_signed_in? %>
            <% if current_user.usertype == "Admin" %>
              <%= link_to "Edit", edit_scoreboard_path(profile), class: "data btn btn-primary" %>

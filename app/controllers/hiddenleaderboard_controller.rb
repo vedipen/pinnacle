@@ -52,7 +52,7 @@ class HiddenleaderboardController < ApplicationController
           end
           if @flag==false
             # iDHAR ANTIVIRUS NHI HAI
-            @scores[i.teamowner.team.id] = ((@scores[i.teamowner.team.id]).to_i + (i.amount*@multiplier)).to_s
+            @scores[i.teamowner.team.id] = ((@scores[i.teamowner.team.id]).to_i + (j.currentscore*@multiplier)).to_s
           end
         end
       end
