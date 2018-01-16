@@ -21,39 +21,35 @@ class BetsController < ApplicationController
   end
 
   def new
-    if current_user.usertype=="Spectator"
-      @bets = Bet.joins(:user).order("user_id ASC")
-      @bet =  current_user.bets.build
-      @tempp = Post.where(events: true, hidden_transactions: true)
-      @tempt = Team.all
-      if @tempp.size==0 || @tempt.size==0 || current_user.bets.size==10
-        flash[:alert] = "No balance or event available for transaction."
-        redirect_to bets_path
-      end
+    @bets = Bet.joins(:user).order("user_id ASC")
+    @bet =  current_user.bets.build
+    @tempp = Post.where(events: true, hidden_transactions: true)
+    @tempt = Team.all
+    if @tempp.size==0 || @tempt.size==0 || current_user.bets.size==10
+      flash[:alert] = "No balance or event available for transaction."
+      redirect_to bets_path
     end
   end
 
   def create
-    if current_user.usertype=="Spectator"
-      @bet = current_user.bets.build(bet_params)
-      if @bet
-        @sum=0
-        for i in @bet.user.bets
-          if i.post==@bet.post && i.team==@bet.team
-            @sum=1
-          end
+    @bet = current_user.bets.build(bet_params)
+    if @bet
+      @sum=0
+      for i in @bet.user.bets
+        if i.post==@bet.post && i.team==@bet.team
+          @sum=1
         end
-        if @sum>=1
-          flash[:alert] = "Event " + @bet.post.title + " and team "+ @bet.team.name + " already has your bet."
-          redirect_to new_bet_path
-        else
-          @bet.save
-          flash[:notice] = "Transaction Successful. PMC is not responsible for any leaks. A transaction can't be deleted or edited once it is done. Contact PMC if any doubts."
-          redirect_to bets_path
-        end
-      else
-        redirect_to new_bet_path
       end
+      if @sum>=1
+        flash[:alert] = "Event " + @bet.post.title + " and team "+ @bet.team.name + " already has your bet."
+        redirect_to new_bet_path
+      else
+        @bet.save
+        flash[:notice] = "Transaction Successful. PMC is not responsible for any leaks. A transaction can't be deleted or edited once it is done. Contact PMC if any doubts."
+        redirect_to bets_path
+      end
+    else
+      redirect_to new_bet_path
     end
   end
 
@@ -81,19 +77,11 @@ class BetsController < ApplicationController
   end
 
   def authenticate_user_spectator
-    if current_user.usertype == "Spectator"
 
-    else
-      redirect_to root_path
-    end
   end
 
   def same_user_or_admin_can_edit
-    if current_user.usertype == "Admin" || current_user.usertype == "Spectator"
-
-    else
-      redirect_to root_path
-    end
+  
   end
 
 end
