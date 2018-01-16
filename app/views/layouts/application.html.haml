@@ -105,7 +105,7 @@
                         = link_to "My PMC Profile", new_pmcmember_path
                       = link_to "Betting " + (100-current_user.bets.size*10).to_s + "MB", bets_path
                       - if current_user.usertype == "Admin"
-                        = link_to "Admin", "admin", target: "_blank"
+                        = link_to "Admin", rails_admin_path, target: "_blank"
                         = link_to "Auction", random_path
                     %li.divider
                     %li
