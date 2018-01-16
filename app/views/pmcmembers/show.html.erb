@@ -49,6 +49,37 @@
             <p><%= simple_format(@pmcprofile.education)%></p>
             <h3>Room Number</h3>
             <p><%= simple_format(@pmcprofile.room)%></p>
+            <% if @pmcprofile.team %>
+            <h3>Coordinator of Team</h3><br>
+            <section class="container">
+            <div class="row active-with-click">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Grey1">
+                    <h2>
+                        <span><a href="<%= team_path(@pmcprofile.team)%>"><%= @pmcprofile.team.name %></a></span>
+                        <strong>
+                          <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                          <p style="display: inline;"><%= @pmcprofile.team.teamowner.user.name%></p>
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                      <% if @pmcprofile.team.image %>
+                        <div class="img-container">
+                          <a href="<%= team_path(@pmcprofile.team)%>"><img class="img-responsive" style="height: 280px; width: 100%; display: block;" src="<%= @pmcprofile.team.image%>"></a>
+                        </div>
+                      <% end %>
+                      <div class="mc-description">
+                            <%= simple_format(@pmcprofile.team.about_team)%>
+                        </div>
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </article>
+            </div>
+            </div>
+            </section>
+            <% end %>
             <hr>
             <%=
             if current_user

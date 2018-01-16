@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116081706) do
+ActiveRecord::Schema.define(version: 20180116091434) do
 
   create_table "anti_viri", force: :cascade do |t|
     t.integer "teamowner_id"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 20180116081706) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.integer "team_id"
+    t.index ["team_id"], name: "index_pmcmembers_on_team_id"
     t.index ["user_id"], name: "index_pmcmembers_on_user_id"
   end
 

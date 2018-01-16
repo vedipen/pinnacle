@@ -9,6 +9,7 @@
   = f.input :nick_name, label: 'Nick Name'
   = f.input :room, label: 'Room Number'
   = f.input :phone, label: 'Mobile'
+  = f.input :team_id, label: 'Team', include_blank: false, include_hidden: false, collection: Team.all, label_html: { style: "font-weight: inherit;" }
 
   = f.button :submit
 </main>

@@ -69,6 +69,35 @@
                     </div>
                 </div>
             </section>
+            <% if @team.pmcmember %>
+            <h3>PMC Coordinator</h3>
+            <section class="container">
+              <div class="row active-with-click">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <article class="material-card Grey1" style="margin-bottom: 0.8em;">
+                            <h2>
+                                <span><a href="<%= pmcmember_path(@team.pmcmember)%>"><%= @team.pmcmember.user.name %></a></span>
+                                <strong>
+                                  <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                  <p style="display: inline;"><%= @team.pmcmember.nick_name%></p>
+                                </strong>
+                            </h2>
+                            <div class="mc-content">
+                                <div class="img-container">
+                                    <a href="<%= pmcmember_path(@team.pmcmember)%>"><img class="img-responsive" style="height: 280px; width: 100%; display: block;" src="<%= @team.pmcmember.image%>"></a>
+                                </div>
+                                <div class="mc-description">
+                                    <%= simple_format(@team.pmcmember.aboutme)%>
+                                </div>
+                            </div>
+                            <a class="mc-btn-action">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <% end %>
             <h3>Team Participants</h3>
             <br>
             <section class="container">

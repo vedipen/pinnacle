@@ -60,7 +60,7 @@ class PmcmembersController < ApplicationController
   end
 
   def pmc_params
-    params.require(:pmcmember).permit(:aboutme, :seniority, :age, :education, :nick_name, :room, :phone, :image)
+    params.require(:pmcmember).permit(:aboutme, :seniority, :age, :education, :nick_name, :room, :phone, :image, :team_id)
   end
 
   def already_created_profile
