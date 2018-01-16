@@ -21,31 +21,16 @@ class ScoreboardsController < ApplicationController
 
   def create
     @scoreboard = Scoreboard.new(scoreboard_params)
-    if Team.find(scoreboard_params[:team_id]).scoreboard != nil
-      flash[:alert] = "Team is already on scoreboard."
-      redirect_to new_scoreboard_path
-    else
-      @scoreboard.save
-      redirect_to scoreboards_path
-    end
+    @scoreboard.save
+    redirect_to scoreboards_path
   end
 
   def update
     tempupdate = scoreboard_params
-    @multiplier = 0
-    if tempupdate[:currentscore] == 25
-      @multiplier = 1
-    elsif tempupdate[:currentscore] == 50
-      @multiplier = 2
-    elsif tempupdate[:currentscore] == 75
-      @multiplier = 3
-    elsif tempupdate[:currentscore] == 100
-      @multiplier = 4
-    end
+    @eventdone = Post.find(tempupdate[:post_id])
     @scoreadded = tempupdate[:currentscore]
 
-    tempupdate[:currentscore] = (scoreboard_params[:currentscore].to_i + Team.find(scoreboard_params[:team_id]).scoreboard.currentscore).to_s
-    if @scoreboard.update(tempupdate)
+    if @scoreboard.update(scoreboard_params)
       redirect_to scoreboards_path
     else
       redirect_to edit_scoreboard_path(@scoreboard)
@@ -54,13 +39,13 @@ class ScoreboardsController < ApplicationController
 
   def destroy
     @scoreboard.destroy
-    redirect_to root_path
+    redirect_to scoreboards_path
   end
 
   private
 
   def scoreboard_params
-    params.require(:scoreboard).permit(:team_id, :currentscore)
+    params.require(:scoreboard).permit(:team_id, :currentscore, :post_id)
   end
 
   def find_scoreboard

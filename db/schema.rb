@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116101939) do
+ActiveRecord::Schema.define(version: 20180116123025) do
 
   create_table "anti_viri", force: :cascade do |t|
     t.integer "teamowner_id"
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 20180116101939) do
     t.integer "currentscore", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "post_id"
+    t.index ["post_id"], name: "index_scoreboards_on_post_id"
     t.index ["team_id"], name: "index_scoreboards_on_team_id"
   end
 
@@ -140,6 +142,7 @@ ActiveRecord::Schema.define(version: 20180116101939) do
     t.integer "hidden_points", default: 75
     t.integer "hidden_virus", default: 2
     t.integer "hidden_antivirus", default: 1
+    t.integer "finalscore", default: 0
     t.index ["user_id"], name: "index_teamowners_on_user_id"
   end
 
@@ -172,6 +175,7 @@ ActiveRecord::Schema.define(version: 20180116101939) do
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.string "usertype"
+    t.integer "bettingscore", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

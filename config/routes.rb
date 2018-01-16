@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'hiddenleaderboard/index'
+
+  get 'leaderboard/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -27,5 +31,7 @@ Rails.application.routes.draw do
 
   get 'random/select' => 'random#select'
   get 'random' => 'random#index'
+  get 'scoreboard' => 'leaderboard#index'
+  get 'scoreboard/betting' => 'leaderboard#betting'
 
 end
