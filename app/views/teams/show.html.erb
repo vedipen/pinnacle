@@ -98,6 +98,7 @@
                 </div>
             </section>
             <% end %>
+            <% if @team.profiles.size !=0 %>
             <h3>Team Participants</h3>
             <br>
             <section class="container">
@@ -128,8 +129,11 @@
                   <% end %>
                 </div>
             </section>
-            <h3>Current Score</h3>
-            <p><%= @team.scoreboard.currentscore %> MB</p>
+            <% end %>
+            <% if @team.scoreboard %>
+              <h3>Current Score</h3>
+              <p><%= @team.scoreboard.currentscore %> MB</p>
+            <% end %>
             <br>
             <h3>Team Budget</h3>
             <br>
