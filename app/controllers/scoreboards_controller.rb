@@ -4,7 +4,7 @@ class ScoreboardsController < ApplicationController
   before_action :admin_can_edit, only: [:edit, :update, :destroy, :new]
 
   def index
-    @scoreboards = Scoreboard.joins(:team).order("name ASC")
+    @scoreboards = Scoreboard.joins(:team).order("created_at DESC")
 
   end
 
@@ -12,7 +12,7 @@ class ScoreboardsController < ApplicationController
   end
 
   def new
-    @scoreboards = Scoreboard.joins(:team).order("name ASC")
+    @scoreboards = Scoreboard.joins(:team).order("created_at DESC")
     @scoreboard =  Scoreboard.new
   end
 
