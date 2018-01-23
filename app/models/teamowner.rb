@@ -2,6 +2,7 @@ class Teamowner < ApplicationRecord
   belongs_to :user
   has_attached_file :image, styles: { medium: "700x500#", small: "350x250>" }
   has_one :team
+  has_one :cryptic 
   has_many :hiddens
   has_many :viri
   has_many :anti_viri

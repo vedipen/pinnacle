@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116123025) do
+ActiveRecord::Schema.define(version: 20180123153942) do
 
   create_table "anti_viri", force: :cascade do |t|
     t.integer "teamowner_id"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 20180116123025) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "cryptics", force: :cascade do |t|
+    t.integer "teamowner_id"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teamowner_id"], name: "index_cryptics_on_teamowner_id"
   end
 
   create_table "hiddens", force: :cascade do |t|

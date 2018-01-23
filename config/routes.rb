@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :anti_viri
   resources :bets
   resources :scoreboards
+  resources :cryptics
   resources :hiddenleaderboards
   root 'posts#index'
 
@@ -36,5 +37,6 @@ Rails.application.routes.draw do
   get 'leaderboard' => 'leaderboard#index', as: 'originalscoreboard'
   get 'hiddenleaderboard' => 'hiddenleaderboard#index', as: 'finalleaderboard'
   get 'leaderboard/betting' => 'leaderboard#betting'
+  get 'cryptic/solved' => redirect('/CrypticClues123.pdf'), as: 'cryptic_pdf'
 
 end
