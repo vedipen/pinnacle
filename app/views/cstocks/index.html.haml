@@ -1,0 +1,24 @@
+- if user_signed_in?
+	.jumbotron.text-center
+		%h1
+			Hello
+			= current_user.name
+		%br/
+		%h4
+			.text-muted
+				PMC welcomes you to Pinnacle '18
+- else
+	.jumbotron.text-center
+		%h1#intro
+			Welcome to Pinnacle '18
+			%h4
+				.text-muted
+					Lets get started!
+%br/
+%br/
+%br/
+
+
+- @cstocks.each do |cstock|
+	= link_to cstock.company.name + " : " + cstock.price.to_s, cstock
+	%br/

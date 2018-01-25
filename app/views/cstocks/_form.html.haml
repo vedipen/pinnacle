@@ -1,0 +1,9 @@
+<section class="container">
+<main role="main" class="container">
+= simple_form_for @cstock do |f|
+  = f.input :price
+  = f.input :company_id, label: 'Company', include_blank: false, include_hidden: false, collection: Company.all
+
+  = f.button :submit, class: "btn btn-primary"
+</main>
+</section>

@@ -1,0 +1,14 @@
+<section class="container">
+<main role="main" class="container">
+= simple_form_for @ostock do |f|
+  = f.input :price
+  = f.input :company_id, label: 'Company', include_blank: false, include_hidden: false, collection: Company.all
+
+  = f.button :submit, "Buy!", class: "btn btn-primary"
+<br>
+<br>
+= link_to "All Companies", companies_path, class: "data btn btn-primary"
+<br><br>
+= link_to "Portfolio", ostocks_path, class: "data btn btn-primary"
+</main>
+</section>

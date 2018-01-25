@@ -1,0 +1,46 @@
+<style>
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+  padding: 1rem;
+}
+.sidebar-module-inset {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: .25rem;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+  margin-bottom: 0;
+}
+.side-random a {
+  color: white;
+}
+.side-random {
+  margin-left: 20px;;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+</style>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-sm-8 blog-main">
+      <div class="blog-post">
+        <h1 class="blog-post-title"><%= @ostock.company.name %></h1>
+        <p class="blog-post-meta"><%= "Shared by PMC, " + time_ago_in_words(@ostock.created_at) + " ago"%></a></p>
+        <hr>
+        <hr>
+        <p><%= @ostock.price %></p>
+        <hr>
+
+
+      </div><!-- /.blog-post -->
+    </div><!-- /.blog-main -->
+</div><!-- /.row -->
+
+
+</main><!-- /.container -->

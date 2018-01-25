@@ -1,0 +1,73 @@
+<style>
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+  padding: 1rem;
+}
+.sidebar-module-inset {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: .25rem;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+  margin-bottom: 0;
+}
+.side-random a {
+  color: white;
+}
+.side-random {
+  margin-left: 20px;;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+</style>
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-sm-8 blog-main">
+      <div class="blog-post">
+        <h1 class="blog-post-title"><%= @company.name %></h1>
+        <p class="blog-post-meta"><%= "Shared by PMC, " + time_ago_in_words(@company.created_at) + " ago"%></a></p>
+        <hr>
+        <p><%= simple_format(@company.description)%></p>
+        <hr>
+        <% @company.cstocks.reverse.each_with_index do |cstock, i| %>
+          Day <%= @company.cstocks.size-(i) %> Price (INR) -
+          <i><%= cstock.price %></i>
+          <br>
+        <%end%>
+      </div><!-- /.blog-post -->
+      <br><br>
+      <%= link_to "Buy stocks", new_ostock_path, class: "data btn btn-primary" %>
+      <br><br>
+      <%= link_to "Back to all companies", companies_path, class: "data btn btn-primary" %>
+    </div><!-- /.blog-main -->
+    <aside class="col-sm-4 ml-sm-auto blog-sidebar ">
+      <% if @random_company %>
+      <div class="card text-white bg-primary side-random">
+        <div class="card-body">
+          <strong><p>Random Company</p></strong>
+          <hr>
+          <h3><a href="<%= company_path(@random_company)%>"><%= @random_company.name%></a></h3>
+        </div>
+      </div>
+      <% end %>
+      <% if current_user %>
+      <div class="card text-white bg-primary side-random">
+        <div class="card-body">
+          <% if current_user.usertype == "PMC" || current_user.usertype == "Admin" %>
+          <%= link_to "Edit", edit_company_path(@company), class: "data btn btn-primary"%><br><br>
+          <%= link_to "Delete", company_path(@company), method: :delete, data: { confirm: "Are you sure?" }, class: "data btn btn-primary"%>
+          <%end%>
+        </div>
+      </div>
+      <%end%>
+  </aside>
+</div><!-- /.row -->
+
+
+</main><!-- /.container -->

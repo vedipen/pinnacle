@@ -1,0 +1,38 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Hey <%=
+    if user_signed_in?
+      current_user.name + "!"
+    end
+    %></h1>
+    <p class="lead text-muted">Wallstreet Leaderboard</p>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Wallstreet Leaderboard</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col"><h3><strong>Rank</strong></h3></th>
+        <th scope="col"><h3><strong>Name</strong></h3></th>
+        <th scope="col"><h3><strong>Current Value </strong>(INR)</h3></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @no = 0 %>
+      <% for i in @scores.sort_by {|_key, value| value.to_i}.reverse %>
+        <% @no+=1 %>
+        <tr class="table-active" >
+          <th scope="row"><h4><%= @no %><h4></th>
+          <td><h4><%= User.find(i.first).name %><h4></td>
+          <td><h4><%= i.second %><h4></td>
+        </tr>
+      <% end%>
+    <tbody>
+  <table>
+</section>
+<br>
+<%= link_to "Leaderboard", originalscoreboard_path, class: "data btn btn-primary" %>
+<br><br>
+<br>

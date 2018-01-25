@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123153942) do
+ActiveRecord::Schema.define(version: 20180125141902) do
 
   create_table "anti_viri", force: :cascade do |t|
     t.integer "teamowner_id"
@@ -42,12 +42,31 @@ ActiveRecord::Schema.define(version: 20180123153942) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
   create_table "cryptics", force: :cascade do |t|
     t.integer "teamowner_id"
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["teamowner_id"], name: "index_cryptics_on_teamowner_id"
+  end
+
+  create_table "cstocks", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["company_id"], name: "index_cstocks_on_company_id"
+    t.index ["user_id"], name: "index_cstocks_on_user_id"
   end
 
   create_table "hiddens", force: :cascade do |t|
@@ -60,6 +79,17 @@ ActiveRecord::Schema.define(version: 20180123153942) do
     t.index ["post_id"], name: "index_hiddens_on_post_id"
     t.index ["team_id"], name: "index_hiddens_on_team_id"
     t.index ["teamowner_id"], name: "index_hiddens_on_teamowner_id"
+  end
+
+  create_table "ostocks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "company_id"
+    t.integer "currentsprice"
+    t.index ["company_id"], name: "index_ostocks_on_company_id"
+    t.index ["user_id"], name: "index_ostocks_on_user_id"
   end
 
   create_table "pmcmembers", force: :cascade do |t|
@@ -184,6 +214,7 @@ ActiveRecord::Schema.define(version: 20180123153942) do
     t.string "name", null: false
     t.string "usertype"
     t.integer "bettingscore", default: 0
+    t.integer "wallstreetbal", default: 5000000
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

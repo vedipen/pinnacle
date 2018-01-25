@@ -31,4 +31,13 @@ class LeaderboardController < ApplicationController
       end
     end
   end
+
+  def wallstreet
+    @scores = Hash.new
+    for i in User.all
+      if i.ostocks.size != 0
+        @scores[i.id] = i.wallstreetbal.to_s
+      end
+    end
+  end
 end
