@@ -28,50 +28,51 @@
 = link_to "All Companies", companies_path, class: "data btn btn-primary"
 <br>
 <br>
-= link_to "All News", headlines_path, class: "data btn btn-primary" 
+= link_to "All News", headlines_path, class: "data btn btn-primary"
 <br>
 <br>
 <hr>
 <h4>
 - @ostocks.each do |ostock|
-	- if ostock.currentsprice != nil
-		<i>
-		=	link_to ostock.company.name, ostock.company
-		</i>
-		<br>
-		= "Worth INR : "
-		<i>
-		= ostock.price.to_s
-		</i>
-		<br>
-		= "Bought at INR : "
-		= ostock.currentsprice.to_s
-		<br>
-		= "Current Stock Price INR : "
-		<i>
-		= ostock.company.cstocks.last.price.to_s
-		</i>
-		<br>
-		= "Current Value INR : "
-		= ((ostock.price.to_f/ostock.currentsprice.to_f)*ostock.company.cstocks.last.price).to_i.to_s
-	-	else
-		<i>
-		=	link_to ostock.company.name, ostock.company
-		</i>
-		<br>
-		= "Worth INR : "
-		<i>
-		= ostock.price.to_s
-		</i>
-		<br>
-		= "Current Stock Price INR : "
-		<i>
-		= ostock.company.cstocks.last.price.to_s
-		</i>
-	<br><br>
-	= link_to "Sell Now!", ostock_path(ostock), method: :delete, data: { confirm: "Sell this stock?" }, class: "data btn btn-primary"
-	<br><br>
-	<hr>
+	- if ostock.user == current_user
+		- if ostock.currentsprice != nil
+			<i>
+			=	link_to ostock.company.name, ostock.company
+			</i>
+			<br>
+			= "Worth INR : "
+			<i>
+			= ostock.price.to_s
+			</i>
+			<br>
+			= "Bought at INR : "
+			= ostock.currentsprice.to_s
+			<br>
+			= "Current Stock Price INR : "
+			<i>
+			= ostock.company.cstocks.last.price.to_s
+			</i>
+			<br>
+			= "Current Value INR : "
+			= ((ostock.price.to_f/ostock.currentsprice.to_f)*ostock.company.cstocks.last.price).to_i.to_s
+		-	else
+			<i>
+			=	link_to ostock.company.name, ostock.company
+			</i>
+			<br>
+			= "Worth INR : "
+			<i>
+			= ostock.price.to_s
+			</i>
+			<br>
+			= "Current Stock Price INR : "
+			<i>
+			= ostock.company.cstocks.last.price.to_s
+			</i>
+		<br><br>
+		= link_to "Sell Now!", ostock_path(ostock), method: :delete, data: { confirm: "Sell this stock?" }, class: "data btn btn-primary"
+		<br><br>
+		<hr>
 <h4>
 <br>
 = link_to "Buy Stocks", new_ostock_path, class: "data btn btn-primary"
