@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125141902) do
+ActiveRecord::Schema.define(version: 20180125172850) do
 
   create_table "anti_viri", force: :cascade do |t|
     t.integer "teamowner_id"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(version: 20180125141902) do
     t.integer "user_id"
     t.index ["company_id"], name: "index_cstocks_on_company_id"
     t.index ["user_id"], name: "index_cstocks_on_user_id"
+  end
+
+  create_table "headlines", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_headlines_on_user_id"
   end
 
   create_table "hiddens", force: :cascade do |t|

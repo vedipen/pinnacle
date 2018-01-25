@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :companies
   resources :cstocks
   resources :ostocks
+  resources :headlines
   root 'posts#index'
 
   get 'random/select' => 'random#select'

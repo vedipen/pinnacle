@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_one :profile
   has_many :cstocks
   has_many :ostocks
+  has_many :headlines
   has_many :bets
   has_one :teamowner
   has_one :pmcmember

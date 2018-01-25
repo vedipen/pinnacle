@@ -18,16 +18,12 @@
 %br/
 %br/
 
-
-%section.container
+.container
 	<h4>
 	= "Your Wallstreet Balance INR : " + current_user.wallstreetbal.to_s
 	<br>
 	</h4>
 	<br>
-	<br>
-	= link_to "All News", headlines_path, class: "data btn btn-primary"
-	<br>
 	%br/
 	= link_to "Buy Stocks", new_ostock_path, class: "data btn btn-primary"
 	%br/
@@ -35,24 +31,9 @@
 	= link_to "Portfolio", ostocks_path, class: "data btn btn-primary"
 	%br/
 	%br/
-	.row.active-with-click
-		- @companies.each do |post|
-			.col-md-4.col-sm-6.col-xs-12
-				<h3>
-				= link_to post.name, post
-				<br>
-				Price (INR) -
-				- if post.cstocks.size != 0
-					=	post.cstocks.last.price.to_s
-				- else
-
-				</h3>
-	%br/
-	%br/
-	= link_to "Buy Stocks", new_ostock_path, class: "data btn btn-primary"
-	%br/
-	%br/
-	= link_to "Portfolio", ostocks_path, class: "data btn btn-primary"
-%br/
-%br/
-%br/
+	%h2
+		News -
+		- @headlines.each do |headline|
+			= link_to headline.title, headline
+			%br/
+	%h2
