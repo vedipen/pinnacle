@@ -32,8 +32,9 @@
 	%br/
 	%br/
 	%h2
-		News -
 		- @headlines.each do |headline|
+			News -
 			= link_to headline.title, headline
+			%br/
 			%br/
 	%h2
