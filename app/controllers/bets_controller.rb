@@ -5,7 +5,7 @@ class BetsController < ApplicationController
   before_action :authenticate_user_spectator
 
   def index
-    @bets = Bet.joins(:user).order("user_id ASC")
+    @bets = Bet.joins(:user).order("created_at DESC")
     @sum1=0
     if @bets!=nil
       @bets.each do |profile|
