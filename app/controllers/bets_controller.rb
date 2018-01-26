@@ -25,7 +25,7 @@ class BetsController < ApplicationController
     @bet =  current_user.bets.build
     @tempp = Post.where(events: true, hidden_transactions: true)
     @tempt = Team.all
-    if @tempp.size==0 || @tempt.size==0 || current_user.bets.size==10
+    if @tempp.size==0 || @tempt.size==0 || current_user.bets.size==11
       flash[:alert] = "No balance or event available for transaction."
       redirect_to bets_path
     end
@@ -81,7 +81,7 @@ class BetsController < ApplicationController
   end
 
   def same_user_or_admin_can_edit
-  
+
   end
 
 end
